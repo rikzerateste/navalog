@@ -1,0 +1,112 @@
+@import "../../../styles/mixins/colors.scss";
+@import "../../../styles/mixins/padding.scss";
+@import "../../../styles/mixins/responsive.scss";
+@import "../../../styles/mixins/fonts.scss";
+
+.container{
+    @include Padding;
+    height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    padding-top: 100px;
+    
+    @include Phone{
+        grid-template-columns: 1fr;
+        grid-template-rows: max-content;
+        min-height: 100vh;
+        height: fit-content;
+    }
+
+    .content{
+        display: grid;
+        align-items: center;
+        grid-template-columns: repeat(2,1fr);
+        gap: 16px;
+
+        @include Phone{
+            grid-template-columns: 1fr;
+            grid-template-rows: max-content;
+            min-height: 100vh;
+            height: fit-content;
+        }
+    }
+
+}
+
+.textInfo{
+    
+    
+    h1{
+        @include SizeFontLarge;
+        // font-size: 32px;
+        font-weight: bold;
+    }
+    p{
+        @include SizeFontMedium;
+        // font-size: 20px;
+        font-weight: 600;
+        opacity: 0.8;
+    }
+    Button{
+        margin-top: 20px;
+    }
+}
+
+.imageInfo{
+    text-align: end;
+
+    @include Phone{
+        text-align: center;
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    img{
+        @include Phone{
+            max-width: 100%;
+            max-height: 300px;
+        }
+    }
+    
+}
+
+.legendaDados{
+    display: flex;
+    flex-direction: column;
+
+    .legendaTitle{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0;
+        // font-size: 1.5rem;
+    }    
+
+    h1{
+        @include SizeFontLarge;
+        margin: 0;
+    }
+
+    p{
+        @include SizeFontNormal;
+        // font-size: 1rem;
+        margin: 0;
+        opacity: 0.5;
+    }
+}
+
+.dados{
+    margin-top: 48px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+
+    @include Phone{
+        margin-bottom: 32px;
+    }
+}
+
+.locationSpan{
+    display: flex;
+    align-items: center;
+}

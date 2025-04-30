@@ -1,0 +1,87 @@
+@import "../../../styles/mixins/responsive.scss";
+@import "../../../styles/mixins/fonts.scss";
+
+.container {
+    font-weight: 300;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 250px 250px 250px;
+
+    
+    @include Phone{
+        min-height: 100vh;
+        justify-content: normal;
+        padding: 40px 16px;
+    }
+}
+
+.titulo{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 64px;
+
+    h1{
+        margin: 0;
+        font-size: 3rem;
+        font-weight: 400;
+    }
+}
+
+.conteudo{
+    display: grid;
+    grid-template-columns: repeat(2,2fr);
+    grid-gap: 24px;
+
+    @include Phone{
+        grid-template-columns: 1fr;
+    }
+}
+
+.cardPergunta{
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0px 15px 16px #080F340F;
+    padding: 32px 40px;
+    height: fit-content;
+
+
+    p{
+        color: #6F6C90;
+    }
+}
+
+.tituloCard{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+
+    h3{
+        font-weight: 600;
+        margin: 0;
+    }
+
+    button{
+        border: none;
+        border-radius: 8px;
+        height: 40px;
+        width: 40px;
+        cursor: pointer;
+    }
+
+    .btnExpandir{
+        background-color: #FF725E;
+        color: #fff;
+    }
+    .btnContrair{
+        background-color: #F7F7FF;
+        color: #6F6C90;
+    }
+}

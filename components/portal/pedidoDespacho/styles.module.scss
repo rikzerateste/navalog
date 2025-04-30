@@ -1,0 +1,81 @@
+@import "../../../styles/mixins/colors.scss";
+@import "../../../styles/mixins/padding.scss";
+@import "../../../styles/mixins/responsive.scss";
+@import "../../../styles/mixins/fonts.scss";
+@import "../../../node_modules/primereact/resources/primereact.css";
+@import "../../../node_modules/primereact/resources/primereact.min.css";
+
+
+
+
+.container{
+    background-color: #EEEEEE;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+
+    flex: 1;
+    padding: 1em 2.5em 2.5em 2.5em;
+}
+
+.title{
+  font-size: 1.25em;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.containerPesquisa{
+  display: grid;
+  grid-template-columns: 1fr 11em;
+  grid-column-gap: 0.5em;
+}
+
+
+.tabela{
+  margin-top: 1em;
+  border-radius: 50px;
+}
+
+.iconCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25em;
+  height: 100%; /* Certifique-se de que o ícone ocupe toda a altura da célula */
+  font-size: 16px; /* Ajuste o tamanho do ícone conforme necessário */
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.button-container {
+  display: flex;
+  justify-content: center; /* Centraliza o botão horizontalmente */
+  align-items: center;     /* Centraliza o botão verticalmente */
+}
+
+
+
+.rounded-datatable {
+  border-radius: 20px; /* Ajuste o valor conforme necessário */
+  overflow: hidden; /* Garante que o conteúdo não ultrapasse as bordas arredondadas */
+}
+
+.loading{
+  margin-top: 1em;
+}
+
+.compact-datatable .p-datatable-tbody > tr > td {
+  padding: 4px 8px; /* Ajuste os valores de padding conforme necessário */
+  height: 70px; /* Ajuste o valor da altura conforme necessário */
+}
+
+.compact-datatable .p-datatable-tbody > tr > td > .p-column-title {
+  padding: 0; /* Remove o padding adicional dos títulos das colunas */
+}
+.icon-bold {
+  font-weight: bold;
+  /* Adicione outras propriedades de estilo se necessário */
+}

@@ -1,0 +1,196 @@
+.container {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.293);
+  border: none;
+  margin: 0;
+  z-index: 10;
+}
+
+.form {
+  width: 58em;
+  background-color: #ffffff;
+  border-radius: 1em;
+  padding: 2em;
+  font-size: 0.875em;
+  max-height: 33.75em;
+  min-height: 20vh;
+  /* Define uma altura mínima */
+  overflow-y: scroll;
+  /* Permita a rolagem vertical */
+}
+
+.title {
+  font-size: 1.25em;
+  font-weight: 500;
+  gap: 0.5em;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  margin-bottom: 1em;
+}
+
+.containerLinha {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.linha {
+  border-top: 1px solid #aaa;
+  flex-grow: 1;
+}
+
+.texto {
+  margin: 0 0.5em;
+  font-size: 16px;
+  color: #aaa;
+}
+
+.informacoes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 2em;
+}
+
+.embarcacaoCategoria,
+.dataEmissao {
+  width: 100%;
+  display: grid;
+  padding: 0;
+  grid-template-columns: 50% 48%;
+  grid-column-gap: 1em;
+}
+
+.nivelQuantidade {
+  width: 100%;
+  display: grid;
+  padding: 0;
+  grid-template-columns: 78% 20%;
+  grid-column-gap: 1em;
+}
+
+.opcao {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  height: auto;
+  gap: 0.25em;
+}
+
+.opcao a {
+  padding: 0;
+  white-space: nowrap;
+}
+
+.botoes {
+  display: flex;
+  justify-content: end;
+  margin-top: 4em;
+  gap: 1em;
+}
+
+.inputText {
+  border-radius: 1em;
+  height: 2em;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.inputTableTripulantes {
+  border-radius: 1em;
+  height: 1em;
+  width: 100%;
+  flex-grow: 1;
+  box-sizing: border-box;
+}
+
+.firstHeader {
+  color: #686a6d;
+  padding: 0 0 0 0.25em;
+  font-size: 0.875em;
+  background-color: #FFF;
+  max-width: 27em;
+  min-width: 10em;
+  border: none;
+  align-content: center;
+  text-align: center;
+}
+
+.no-data {
+  border: none;
+  display: none;
+}
+
+.tripulantesLista {
+  margin-top: 1em;
+}
+
+.tripulante {
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 0.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.errorInput {
+  border: 1px solid red;
+
+}
+
+.errorMessage {
+  color: red;
+  text-align: center;
+  font-size: 0.875em;
+  margin-top: 0.25em;
+}
+
+.tabela {
+  border: none;
+}
+
+.listaTripulantes {
+  .p-datatable {
+    .p-datatable-tbody {
+      td {
+        padding: 8px 0;
+        /* Adiciona espaçamento vertical */
+      }
+    }
+  }
+}
+
+.icon-bold {
+  font-weight: bold;
+}
+
+
+
+
+.botoes {
+  display: flex;
+  justify-content: end;
+  margin-top: 4em;
+  gap: 1em;
+}
+
+.error {
+  border: 1px solid red;
+}
+
+.modal {
+  border-radius: 20px; // Define o raio da borda
+  padding: 0 !important;
+  background-color: none;
+
+}

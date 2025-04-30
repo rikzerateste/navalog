@@ -1,0 +1,190 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model atividade {
+  Tipo_de_atividade String       @id @db.VarChar(5)
+  Descricao         String?      @db.VarChar(40)
+  embarcacao        embarcacao[]
+}
+
+model CTS {
+  CTS_controle  Int             @id @default(autoincrement())
+  Embarcacao    String
+  Data_emissao  String?
+  embarcacao    embarcacao      @relation(fields: [Embarcacao], references: [Inscricao])
+  tripulanteCTS TripulanteCTS[]
+}
+
+model TripulanteCTS {
+  id                 Int    @id @default(autoincrement())
+  Categoria          String
+  Nivel              String
+  Quantidade         Int
+  CTSId              Int
+  Tipo_de_Tripulante String
+  cts                CTS    @relation(fields: [CTSId], references: [CTS_controle])
+}
+
+model embarcacao {
+  Empresa                    Int?
+  Inscricao                  String       @id @unique @db.VarChar(20)
+  Embarcacao                 String       @db.VarChar(100)
+  Arqueacao_Bruta            String?      @db.VarChar(10)
+  Registro_Tribunal_Maritimo String?      @db.VarChar(10)
+  Seguro                     String?      @db.VarChar(10)
+  Tonelagem_porte_bruto      String?      @db.VarChar(10)
+  Tonelagem_porte_liquido    String?      @db.VarChar(10)
+  Observacao                 String?      @db.VarChar(10)
+  Navegacao                  String?      @db.VarChar(10)
+  Id_propulsao               Int?
+  Atividade                  String?      @db.VarChar(5)
+  Comprimento_Total          String?      @db.VarChar(10)
+  cts                        CTS[]
+  atividade                  atividade?   @relation(fields: [Atividade], references: [Tipo_de_atividade], onDelete: NoAction, onUpdate: NoAction, map: "Atividade")
+  empresa                    empresa?     @relation(fields: [Empresa], references: [Codigo], onDelete: NoAction, onUpdate: NoAction, map: "Empresa")
+  navegacao                  navegacao?   @relation(fields: [Navegacao], references: [Codigo_da_area_de_navegacao], onDelete: NoAction, onUpdate: NoAction, map: "Navegacao")
+  propulsao                  propulsao?   @relation(fields: [Id_propulsao], references: [Id_propulsao], onDelete: NoAction, onUpdate: NoAction, map: "Propulsao")
+  lpe                        lpe[]
+  lpecomboio                 lpecomboio[]
+  pdespacho                  pdespacho[]
+
+  @@index([Atividade], map: "Atividade_idx_embarcacao")
+  @@index([Empresa], map: "Empresa_idx_embarcacao")
+  @@index([Navegacao], map: "Navegacao_idx_embarcacao")
+  @@index([Id_propulsao], map: "Propulsao_idx_embarcacao")
+}
+
+model empresa {
+  Codigo              Int          @id @default(autoincrement())
+  Empresa             String       @db.VarChar(100)
+  Endereco            String?      @db.VarChar(200)
+  Num                 String?      @db.VarChar(10)
+  Cidade              String?      @db.VarChar(100)
+  Bairro              String?      @db.VarChar(100)
+  Cep                 String?      @db.VarChar(20)
+  UF                  String?      @db.VarChar(10)
+  CNPJ                String?      @db.VarChar(18)
+  Inscricao_Estadual  String?      @db.VarChar(20)
+  Contato             String?      @db.VarChar(50)
+  Fone_1              String?      @db.VarChar(15)
+  Fone_2              String?      @db.VarChar(15)
+  Celular             String?      @db.VarChar(15)
+  Email               String?      @db.VarChar(50)
+  Empresa_certificado String?      @db.VarChar(10)
+  Empresa_vencecert   String?      @db.VarChar(10)
+  embarcacao          embarcacao[]
+}
+
+model funcao {
+  Controle  Int       @id
+  Funcao    String?   @unique @db.VarChar(15)
+  Descricao String?   @db.VarChar(50)
+  pessoal   pessoal[]
+
+  @@index([Funcao], map: "Funcao_idx_funcao")
+}
+
+model lpe {
+  Controle                   Int          @id @default(autoincrement())
+  Companhia_Agente           String?      @db.VarChar(30)
+  Embarcacao                 String?      @db.VarChar(20)
+  Porto_de_chegada_e_partida String?      @db.VarChar(500)
+  Porto_de_procedencia       String?      @db.VarChar(500)
+  Data_emissao               String?      @db.VarChar(10)
+  Lpe_obs1                   String?      @db.VarChar(300)
+  Comandante                 String?      @db.VarChar(300)
+  embarcacao                 embarcacao?  @relation(fields: [Embarcacao], references: [Inscricao], onDelete: NoAction, onUpdate: NoAction, map: "Emb")
+  lpecomboio                 lpecomboio[]
+  lped                       lped[]
+
+  @@index([Embarcacao], map: "Embarcacao_idx_lpe")
+}
+
+model lpecomboio {
+  Controle   Int         @id @default(autoincrement())
+  Lista      Int?
+  Embarcacao String?     @db.VarChar(20)
+  embarcacao embarcacao? @relation(fields: [Embarcacao], references: [Inscricao], onDelete: NoAction, onUpdate: NoAction, map: "Embarc")
+  lpe        lpe?        @relation(fields: [Lista], references: [Controle], onDelete: NoAction, onUpdate: NoAction, map: "LPE")
+
+  @@index([Embarcacao], map: "Embarcacao_idx_lpecomboio")
+  @@index([Lista], map: "Lista_idx_lpecomboio")
+}
+
+model lped {
+  Controle      Int      @id @default(autoincrement())
+  Lista         Int?
+  Documento     String?  @db.VarChar(25)
+  Identificacao String?  @db.VarChar(15)
+  pessoal       pessoal? @relation(fields: [Documento], references: [Documento], onDelete: NoAction, onUpdate: NoAction, map: "Documento")
+  lpe           lpe?     @relation(fields: [Lista], references: [Controle], onDelete: NoAction, onUpdate: NoAction, map: "LPE")
+
+  @@index([Documento], map: "Documento_idx_lped")
+  @@index([Lista], map: "LPE_idx_lped")
+}
+
+model navegacao {
+  Codigo_da_area_de_navegacao String       @id @db.VarChar(10)
+  Descricao                   String?      @db.VarChar(30)
+  embarcacao                  embarcacao[]
+}
+
+model pdespacho {
+  Despacho_embarcacao                                     String?     @db.VarChar(20)
+  Data_do_despacho                                        String?     @db.VarChar(15)
+  Despacho                                                String?     @db.VarChar(10)
+  Despacho_como_esperado                                  String?     @db.VarChar(10)
+  Revalidacao                                             String?     @db.VarChar(10)
+  VHF_COM_DSC                                             String?     @db.VarChar(10)
+  VHF_SEM_DSC                                             String?     @db.VarChar(10)
+  Transponder_9GHz                                        String?     @db.VarChar(10)
+  Frequencia                                              String?     @db.VarChar(50)
+  Despacho_comandante                                     String?     @db.VarChar(100)
+  Despacho_obs                                            String?     @db.VarChar(2000)
+  Porto_de_Estadia                                        String?     @db.VarChar(100)
+  Certificado_ou_documento_temporario1                    String?     @db.VarChar(10)
+  Certificado_ou_documento_temporario2                    String?     @db.VarChar(10)
+  Informacao_sobre_vencimento_do_certificado_ou_documento String?     @db.VarChar(300)
+  Id                                                      Int         @id @default(autoincrement())
+  pessoal                                                 pessoal?    @relation(fields: [Despacho_comandante], references: [Nome], onDelete: NoAction, onUpdate: NoAction, map: "Com")
+  embarcacao                                              embarcacao? @relation(fields: [Despacho_embarcacao], references: [Inscricao], onDelete: NoAction, onUpdate: NoAction, map: "Embarcacao")
+
+  @@index([Despacho_comandante], map: "Com_idx_pdespacho")
+  @@index([Despacho_embarcacao], map: "Embarcacao_idx_pdespacho")
+}
+
+model pessoal {
+  Controle           Int?
+  Documento          String      @id @db.VarChar(25)
+  Nome               String      @unique @db.VarChar(100)
+  Funcao             String?     @db.VarChar(15)
+  Data_de_nascimento String?     @db.VarChar(10)
+  Nacionalidade      Int?
+  Vencimento_CIR     String?     @db.VarChar(10)
+  RG                 String?     @db.VarChar(50)
+  lped               lped[]
+  pdespacho          pdespacho[]
+  funcao             funcao?     @relation(fields: [Funcao], references: [Funcao], onDelete: NoAction, onUpdate: NoAction, map: "Funca")
+
+  @@index([Nome], map: "Com_idx_pessoal")
+  @@index([Funcao], map: "Funcao_idx_pessoal")
+}
+
+model propulsao {
+  Id_propulsao Int          @id @default(autoincrement())
+  Descricao    String?      @db.VarChar(45)
+  embarcacao   embarcacao[]
+}
+
+model user {
+  Id       Int    @id @default(autoincrement())
+  Username String @unique @db.VarChar(40)
+  Password String @db.VarChar(50)
+}

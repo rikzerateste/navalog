@@ -1,0 +1,170 @@
+.container {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.293);
+    border: none;
+    margin: 0;
+    z-index: 10;
+}
+
+
+
+.form {
+    width: 58em;
+    background-color: #ffffff;
+    border-radius: 1em;
+    padding: 2em;
+    font-size: 0.875em;
+}
+
+.title {
+    font-size: 1.25em;
+    font-weight: 500;
+    gap: 0.5em;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    margin-bottom: 1em;
+}
+
+.containerLinha {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.linha {
+    border-top: 1px solid #aaa;
+    flex-grow: 1;
+}
+
+.texto {
+    margin: 0 0.5em;
+    /* ajuste conforme necessário */
+    font-size: 16px;
+    /* ajuste conforme necessário */
+    color: #aaa;
+    /* ajuste conforme necessário */
+}
+
+.informacoes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    margin-bottom: 2em;
+}
+
+
+.opcao {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    height: auto;
+    gap: 0.25em;
+}
+
+.opcao a {
+    padding: 0;
+    white-space: nowrap;
+
+}
+
+
+.botoes{
+    display: flex;
+    justify-content: end;
+    margin-top: 4em;
+    gap: 1em;
+  
+  }
+
+.custom-checkbox .p-checkbox-box {
+    border: 2px solid #d91200; /* Cor da borda quando não selecionado */
+}
+
+.custom-checkbox .p-checkbox-box.p-highlight {
+    background-color: #4c0344; /* Cor do fundo quando selecionado */
+    border-color: #b004b6;     /* Cor da borda quando selecionado */
+}
+
+.custom-checkbox .p-checkbox-box .p-checkbox-icon {
+    color: rgb(71, 9, 9); /* Cor do ícone quando selecionado */
+}
+
+.inputText {
+    border-radius: 1em;
+    height: 2em;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.embarcacaoInscricao {
+    width: 100%;
+    display: grid;
+    padding: 0;
+    grid-template-columns: 70% 28%;
+    grid-column-gap: 1em;
+
+}
+
+.navPropulsaoAtvd {
+    width: 100%;
+    display: grid;
+    padding: 0;
+    grid-template-columns: 33% 33% 30%;
+    grid-column-gap: 1em;
+}
+
+.comandanteEDespachoInfo {
+    width: 100%;
+    display: grid;
+    padding: 0;
+    grid-template-columns: 52% 27% 21%;
+    grid-column-gap: 1em;
+}
+
+.despachoEsperadoEVhf {
+    width: 100%;
+    display: grid;
+    padding: 0;
+    grid-template-columns: 100%;
+    grid-column-gap: 1em;
+}
+
+.dataPortoDeEstadia {
+    width: 100%;
+    display: grid;
+    padding: 0;
+    grid-template-columns: 38% 60%;
+    grid-column-gap: 1em;
+
+}
+.radioFreqTransponder {
+    width: 100%;
+    display: grid;
+    padding: 0;
+    grid-template-columns: 52% 23% 21%;
+    grid-column-gap: 1em;
+}
+.infoCertificado {
+padding: 0.4em 0 0 0.5em;
+display: flex;
+align-items: center;
+}
+
+.error {
+    border: 1px solid red;
+  }
+
+  .modal {
+    border-radius: 20px; // Define o raio da borda
+    padding: 0 !important;
+    background-color: none;
+
+}

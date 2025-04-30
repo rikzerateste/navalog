@@ -1,0 +1,156 @@
+@import "../../../styles/mixins/colors.scss";
+@import "../../../styles/mixins/padding.scss";
+@import "../../../styles/mixins/responsive.scss";
+@import "../../../styles/mixins/fonts.scss";
+@import "../../../node_modules/primereact/resources/primereact.css";
+@import "../../../node_modules/primereact/resources/primereact.min.css";
+
+.container {
+  background-color: #eeeeee;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  flex: 1;
+  padding: 1em 2.5em 2.5em 2.5em;
+}
+
+.title {
+  font-size: 1.25em;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+  gap: 0.5em;
+
+}
+
+.containerPesquisa {
+  display: grid;
+  grid-template-columns: 1fr 11em;
+  grid-column-gap: 0.5em;
+}
+
+.tabela {
+  margin-top: 1em;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.iconCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 16px;
+  gap: 0.25em;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.loading{
+  margin-top: 1em;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rounded-datatable {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.compact-datatable .p-datatable-tbody > tr > td {
+  padding: 4px 8px;
+  height: 70px;
+}
+
+.compact-datatable .p-datatable-tbody > tr > td > .p-column-title {
+  padding: 0;
+}
+
+.inputText {
+  border-radius: 1em;
+  height: 2em;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.botoes {
+  display: flex;
+  justify-content: end;
+  margin-top: 4em;
+  gap: 1em;
+}
+
+.modal {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.293);
+  border: none;
+  margin: 0;
+  z-index: 10;
+}
+
+.form {
+  width: 58em;
+  background-color: #ffffff;
+  border-radius: 1em;
+  padding: 2em;
+  font-size: 0.875em;
+}
+
+.containerLinha {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.linha {
+  border-top: 1px solid #aaa;
+  flex-grow: 1;
+}
+
+.texto {
+  margin: 0 0.5em;
+  font-size: 16px;
+  color: #aaa;
+}
+
+.informacoes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 2em;
+}
+
+.embarcacaoCategoria,
+.nivelQuantidade,
+.dataEmissao {
+  width: 100%;
+  display: grid;
+  padding: 0;
+  grid-template-columns: 50% 48%;
+  grid-column-gap: 1em;
+}
+
+.opcao {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  height: auto;
+  gap: 0.25em;
+}
+
+.opcao a {
+  padding: 0;
+  white-space: nowrap;
+}

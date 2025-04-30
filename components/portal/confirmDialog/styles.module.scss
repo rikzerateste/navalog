@@ -1,0 +1,14 @@
+.container {
+    border-radius: 8px; /* Define o raio da borda arredondada */
+    overflow: hidden; /* Garante que o conteúdo não ultrapasse as bordas arredondadas */
+  }
+  
+
+  /* Se houver um header ou footer, pode precisar de estilos adicionais */
+  .p-dialog .p-dialog-header {
+    border-radius: 8px 8px 0 0; /* Arredonda as bordas superior esquerda e direita */
+  }
+  
+  .p-dialog .p-dialog-footer {
+    border-radius: 0 0 8px 8px; /* Arredonda as bordas inferior esquerda e direita */
+  }
