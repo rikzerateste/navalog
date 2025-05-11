@@ -1,0 +1,62 @@
+@import "./responsive.scss";
+
+@mixin SizeFontEXLarge {
+	font-family: 'Poppins', sans-serif;
+	font-size: 3em;
+
+	@include Phone {
+		font-family: 'Poppins', sans-serif;
+		font-size: 3em;
+	}
+}
+
+@mixin SizeFontLarge {
+	font-family: 'Poppins', sans-serif;
+	font-size: 2em;
+
+	@include Phone {
+		font-family: 'Poppins', sans-serif;
+		font-size: 2em;
+	}
+}
+
+@mixin SizeFontMedium {
+	font-family: 'Poppins', sans-serif;
+	font-size: 1.25em;
+
+	@include Phone {
+		font-family: 'Poppins', sans-serif;
+		font-size: 1.25em;
+	}
+}
+
+@mixin SizeFontMediumMore {
+	font-family: 'Poppins', sans-serif;
+	font-size: 21.3em;
+
+	@include Phone {
+		font-family: 'Poppins', sans-serif;
+		font-size: 21.3em;
+	}
+}
+
+
+@mixin SizeFontNormal {
+	font-family: 'Poppins', sans-serif;
+	font-size: 1em;
+
+	@include Phone {
+		font-family: 'Poppins', sans-serif;
+		font-size: 1rem;
+	}
+}
+
+@mixin SizeFontSmall {
+	font-family: 'Poppins', sans-serif;
+	font-size: 0.75em;
+
+	@include Phone {
+		font-family: 'Poppins', sans-serif;
+		font-size: 0.75em;
+	}
+}
