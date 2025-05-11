@@ -5,10 +5,10 @@
     font-family: "Poppins";
 }
 
-@import "../../../styles/mixins/colors.scss";
-@import "../../../styles/mixins/padding.scss";
-@import "../../../styles/mixins/responsive.scss";
-@import "../../../styles/mixins/fonts.scss";
+@import "@/app/styles/mixins/colors.scss";
+@import "@/app/styles/mixins/padding.scss";
+@import "@/app/styles/mixins/responsive.scss";
+@import "@/app/styles/mixins/fonts.scss";
 @import "../../../node_modules/primereact/resources/primereact.css";
 @import "../../../node_modules/primereact/resources/primereact.min.css";
 
@@ -16,18 +16,18 @@
 
 
 .container {
-    background-image: url('../../../public/images/background.jpg');
+    background-image: url('/public/images/background.jpg');
     background-size: cover; /* Faz com que a imagem cubra todo o elemento */
     background-position: center; /* Centraliza a imagem */
     background-repeat: no-repeat; /* Impede que a imagem se repita */
-    height: 100vh; 
+    height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
     align-items: center;
     justify-content: center;
-    
+
 
     @include Phone {
         grid-template-columns: 1fr;
@@ -152,11 +152,10 @@
     align-items: center;
     height: auto;
   }
-  
+
 .spinner{
 display: flex;
-margin-left: 0.5em;   
+margin-left: 0.5em;
 align-items: center;
-align-content: center;  
+align-content: center;
 }
-  

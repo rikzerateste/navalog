@@ -1,7 +1,7 @@
-@import "../../../styles/mixins/colors.scss";
-@import "../../../styles/mixins/padding.scss";
-@import "../../../styles/mixins/responsive.scss";
-@import "../../../styles/mixins/fonts.scss";
+@import "@/app/styles/mixins/colors.scss";
+@import "@/app/styles/mixins/padding.scss";
+@import "@/app/styles/mixins/responsive.scss";
+@import "@/app/styles/mixins/fonts.scss";
 
 .container{
     @include Padding;
@@ -9,7 +9,7 @@
     width: 100%;
     overflow-x: hidden;
     padding-top: 100px;
-    
+
     @include Phone{
         grid-template-columns: 1fr;
         grid-template-rows: max-content;
@@ -34,8 +34,8 @@
 }
 
 .textInfo{
-    
-    
+
+
     h1{
         @include SizeFontLarge;
         // font-size: 32px;
@@ -67,7 +67,7 @@
             max-height: 300px;
         }
     }
-    
+
 }
 
 .legendaDados{
@@ -80,7 +80,7 @@
         gap: 8px;
         margin: 0;
         // font-size: 1.5rem;
-    }    
+    }
 
     h1{
         @include SizeFontLarge;
