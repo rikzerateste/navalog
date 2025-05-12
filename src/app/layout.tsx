@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PrimeReactProvider } from "primereact/api";
 
-import "@/app/styles/globals.scss";
+import "@/styles/globals.scss";
 import { Lexend } from "next/font/google";
 
 const lexend = Lexend({

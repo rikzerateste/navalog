@@ -7,11 +7,15 @@ const prisma = new PrismaClient();
 const SECRET_KEY = process.env.SECRET_KEY;
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+
+	console.log('REQ -----', req.body);
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Método não permitido' });
   }
 
   const { email, senha } = req.body as { email: string, senha: string };
+
+	console.log('SENHA -----', senha);
 
   if (!SECRET_KEY) {
     console.error("SECRET_KEY não definida.");

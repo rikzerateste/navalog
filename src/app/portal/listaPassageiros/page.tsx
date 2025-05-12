@@ -1,6 +1,6 @@
-import SideBar from "@/app/components/portal/sideBar";
-import styles from "@/app/styles/pages/base.module.scss";
-import ListaPassageirosComponent from "@/app/components/portal/listaPassageiros";
+import SideBar from "@/components/portal/sideBar";
+import styles from "@/styles/pages/base.module.scss";
+import ListaPassageirosComponent from "@/components/portal/listaPassageiros";
 
 export default function ListaPassageiros() {
 	return (

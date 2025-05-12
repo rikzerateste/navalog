@@ -185,5 +185,5 @@ model propulsao {
 model user {
   Id       Int    @id @default(autoincrement())
   Username String @unique @db.VarChar(40)
-  Password String @db.VarChar(50)
+  Password String @db.VarChar(255)
 }

@@ -10,7 +10,7 @@ import "primeicons/primeicons.css";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button as PrimeButton } from "primereact/button";
-import ModalTripulanteCadastro from "@//app/components/portal/modalTripulanteCadastro/index";
+import ModalTripulanteCadastro from "@/components/portal/modalTripulanteCadastro/index";
 import InputSearch from "../input/index";
 import { Skeleton } from "primereact/skeleton";
 import { ProgressBar } from "primereact/progressbar";

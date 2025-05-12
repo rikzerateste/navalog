@@ -10,7 +10,7 @@ import "primeicons/primeicons.css";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button as PrimeButton } from "primereact/button";
-import ModalCadastroEdicao from "@//app/components/portal/modalListaPassageirosCadastro/index";
+import ModalCadastroEdicao from "@/components/portal/modalListaPassageirosCadastro/index";
 import InputSearch from "../input/index";
 import Image from "next/image";
 import { ProgressBar } from "primereact/progressbar";

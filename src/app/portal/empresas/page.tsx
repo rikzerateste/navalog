@@ -1,6 +1,6 @@
-import styles from "@/app/styles/pages/base.module.scss";
-import EmpresasComponent from "@/app/components/portal/empresas";
-import SideBar from "@/app/components/portal/sideBar";
+import styles from "@/styles/pages/base.module.scss";
+import EmpresasComponent from "@/components/portal/empresas";
+import SideBar from "@/components/portal/sideBar";
 
 export default function Empresas() {
 	return (

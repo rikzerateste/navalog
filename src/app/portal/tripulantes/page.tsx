@@ -1,6 +1,6 @@
-import SideBar from "@/app/components/portal/sideBar";
-import styles from "@/app/styles/pages/base.module.scss";
-import TripulantesComponent from "@/app/components/portal/tripulantes";
+import SideBar from "@/components/portal/sideBar";
+import styles from "@/styles/pages/base.module.scss";
+import TripulantesComponent from "@/components/portal/tripulantes";
 
 export default function Tripulantes() {
 	return (

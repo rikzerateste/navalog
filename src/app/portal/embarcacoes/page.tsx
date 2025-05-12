@@ -1,6 +1,6 @@
-import SideBar from "@/app/components/portal/sideBar";
-import Embarcacao_Component from "@/app/components/portal/embarcacoes";
-import styles from "@/app/styles/pages/base.module.scss";
+import SideBar from "@/components/portal/sideBar";
+import Embarcacao_Component from "@/components/portal/embarcacoes";
+import styles from "@/styles/pages/base.module.scss";
 
 export default function Embarcacoes() {
 	return (

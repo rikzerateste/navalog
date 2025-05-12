@@ -1,9 +1,13 @@
 "use client";
-import SideBar from "@//app/components/portal/sideBar";
+
+import SideBar from "@/components/portal/sideBar";
 import { useState, useEffect, ReactElement } from "react";
-import styles from "./layout.module.scss";
 import { toast, ToastContainer } from "react-toastify";
+
+import { useRouter } from "next/navigation";
+
 import "react-toastify/dist/ReactToastify.css";
+import styles from "./portal-layout.module.scss";
 
 const isTokenExpired = (token: any) => {
 	try {
@@ -17,26 +21,23 @@ const isTokenExpired = (token: any) => {
 
 export default function PortalPageLayout({
 	children,
-	login,
 }: {
 	children: ReactElement;
-	login: ReactElement;
 }) {
+	const router = useRouter();
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
 
 	useEffect(() => {
 		const token = localStorage.getItem("token");
 
-		if (token) {
-			if (isTokenExpired(token)) {
-				localStorage.removeItem("token");
-				window.location.reload();
-			} else {
-				setIsAuthenticated(true);
-				toast.success("Bem Vindo!");
-			}
+		if (!token || isTokenExpired(token)) {
+			localStorage.removeItem("token");
+			router.push("/portal/login");
+		} else {
+			setIsAuthenticated(true);
+			toast.success("Bem Vindo!");
 		}
-	}, []);
+	}, [router]);
 
 	return isAuthenticated ? (
 		<div className={styles.main}>
@@ -45,6 +46,6 @@ export default function PortalPageLayout({
 			{children}
 		</div>
 	) : (
-		<div>{login}</div>
+		<div>{children}</div>
 	);
 }
