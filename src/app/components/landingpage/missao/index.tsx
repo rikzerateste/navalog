@@ -6,7 +6,7 @@ import Imagem2 from "/public/images/imagem-barra-2.png";
 
 const Missao = () => {
 	return (
-		<div className={Styles.container}>
+		<div id="missao" className={Styles.container}>
 			<div className={Styles.titulo}>
 				<div className={Styles.subTitulo}>
 					<Image src={Rocket} alt="Icone foguete" />

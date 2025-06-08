@@ -4,35 +4,34 @@
 
 
 .header {
-    @include Padding;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    //grid-template-columns: repeat(3,1fr);
-    width: 100%;
-    align-items: center;
-    justify-items: stretch;
-    color: $text-primary;
+	@include Padding;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	display: grid;
+	grid-template-columns: repeat(2,1fr);
+	width: 100%;
+	align-items: center;
+	justify-items: stretch;
+	color: $text-primary;
 
-    @include Phone{
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-    }
+	@include Phone{
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+	}
 }
 
-.menu{
-    font-weight: 500;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-//  margin-inline: 32px;
-    a+a{
-        margin-left: 40px;
-    }
+.menu {
+	font-weight: 500;
+	font-size: 18px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
 
-    @include Phone{
-        display: none;
-    }
+	a+a {
+		margin-left: 40px;
+	}
+
+	@include Phone{
+		display: none;
+	}
 }

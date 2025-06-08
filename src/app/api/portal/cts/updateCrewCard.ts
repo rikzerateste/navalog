@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
-import authenticate from '../autenticacao/authenticate';
+import authenticate from '../../v1/auth/authenticate';
 
 const prisma = new PrismaClient();
 

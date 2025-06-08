@@ -1,55 +1,40 @@
 "use client";
-import axios from "axios";
+import { login } from "@/services/auth";
+import styles from "./login.module.scss";
 
 import Image from "next/image";
 import { useState } from "react";
+import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
-import Button from "@/components/portal/button";
-import { Message } from "primereact/message";
-import { ProgressSpinner } from "primereact/progressspinner";
-
-import styles from "./login.module.scss";
+import { IconField } from "primereact/iconfield";
+import { InputIcon } from "primereact/inputicon";
 
 export default function Page() {
-	const [email, setEmail] = useState("");
-	const [senha, setSenha] = useState("");
-	const [loginSuccess, setLoginSuccess] = useState(false);
+	const [username, setUsername] = useState("");
+	const [password, setPassword] = useState("");
 	const [loading, setLoading] = useState(false);
-	const [errorMessage, setErrorMessage] = useState("");
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		if (loading) return;
-
-		if (!email || !senha) {
-			setErrorMessage("Por favor, preencha todos os campos.");
+		if (!username || !password) {
 			return;
 		}
 
 		setLoading(true);
-		setErrorMessage("");
 
-		try {
-			const { data } = await axios.post("/api/portal/autenticacao/login", {
-				email,
-				senha,
+		login(username, password)
+			.then((res) => {
+				const { token } = res;
+
+				if (token) {
+					localStorage.setItem("token", token);
+					window.location.replace("/portal");
+				}
+			})
+			.finally(() => {
+				setLoading(false);
 			});
-
-			if (data.token) {
-				localStorage.setItem("token", data.token);
-				setLoginSuccess(true);
-				setLoading(false);
-				window.location.replace("/portal"); // Redireciona para a página do portal
-			} else {
-				setErrorMessage("Usuário e/ou senha estão incorretos.");
-				setLoading(false);
-			}
-		} catch (error) {
-			console.error("Erro de login:", error);
-			setErrorMessage("Erro no servidor. Tente novamente mais tarde.");
-			setLoading(false);
-		}
 	};
 
 	return (
@@ -57,84 +42,30 @@ export default function Page() {
 			<div className={styles.content}>
 				<div className={styles.logo}>
 					<Image src="/images/logo.svg" alt="Logo" width={100} height={100} />
-					<p>WS Sistema</p>
+					<h3>WS Sistema</h3>
 				</div>
 
-				<form onSubmit={handleSubmit}>
-					<div className={styles.dadosInputs}>
-						<div className="p-inputgroup flex-1">
-							<span
-								className="p-inputgroup-addon"
-								style={{
-									background: "rgba(234, 240, 247, 1)",
-									border: "none",
-									borderRadius: "10px 0 0 10px",
-								}}
-							>
-								<i className="pi pi-user" style={{ opacity: "50%" }}></i>
-							</span>
-							<InputText
-								value={email}
-								onChange={(e) => setEmail(e.target.value)}
-								type="text"
-								placeholder="Usuário"
-								aria-label="Usuário"
-								style={{
-									background: "rgba(234, 240, 247, 1)",
-									border: "none",
-									borderRadius: "0 10px 10px 0",
-								}}
-							/>
-						</div>
-
-						<div className="p-inputgroup flex-1">
-							<span
-								className="p-inputgroup-addon"
-								style={{
-									background: "rgba(234, 240, 247, 1)",
-									border: "none",
-									borderRadius: "10px 0 0 10px",
-								}}
-							>
-								<i className="pi pi-lock" style={{ opacity: "50%" }}></i>
-							</span>
-							<InputText
-								value={senha}
-								onChange={(e) => setSenha(e.target.value)}
-								type="password"
-								placeholder="Senha"
-								aria-label="Senha"
-								style={{
-									background: "rgba(234, 240, 247, 1)",
-									border: "none",
-									borderRadius: "0 10px 10px 0",
-								}}
-							/>
-						</div>
-
-						{errorMessage && <Message severity="error" text={errorMessage} />}
-						{loginSuccess && (
-							<Message severity="success" text="Login bem-sucedido!" />
-						)}
-
-						<Button
-							tipoBotao="normal"
-							title="Entrar"
-							disabled={loading}
-							onClick={handleSubmit}
-							tamanho="100%"
+				<form className={styles.form} onSubmit={handleSubmit}>
+					<IconField iconPosition="left">
+						<InputIcon className="pi pi-user" />
+						<InputText
+							value={username}
+							placeholder="Usuário"
+							onChange={(e) => setUsername(e.target.value)}
 						/>
+					</IconField>
 
-						{loading && (
-							<div className={styles.spinner}>
-								<ProgressSpinner
-									style={{ width: "20px", height: "20px" }}
-									strokeWidth="8"
-									animationDuration=".5s"
-								/>
-							</div>
-						)}
-					</div>
+					<IconField iconPosition="left">
+						<InputIcon className="pi pi-lock" />
+						<InputText
+							type="password"
+							placeholder="Senha"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+						/>
+					</IconField>
+
+					<Button type="submit" label="Entrar" disabled={loading} />
 				</form>
 			</div>
 		</div>

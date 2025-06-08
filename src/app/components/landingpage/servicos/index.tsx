@@ -1,19 +1,20 @@
-import Styles from "./servicos.module.scss";
 import Image from "next/image";
+import Styles from "./servicos.module.scss";
 import Star from "/public/images/stars.svg";
 
 const Servicos = () => {
 	return (
-		<div className={Styles.container}>
+		<div id="servicos" className={Styles.container}>
 			<div className={Styles.titulo}>
 				<div className={Styles.subTitulo}>
 					<Image src={Star} alt="Icone estrela" />
 					<p>Nossos</p>
 				</div>
+
 				<h1>Serviços</h1>
 			</div>
 
-			<div className={Styles.conteudo}>
+			<div>
 				<ul>
 					<li>Abertura de rol portuário</li>
 					<li>Agendamento de vistorias junto a capitania dos portos</li>

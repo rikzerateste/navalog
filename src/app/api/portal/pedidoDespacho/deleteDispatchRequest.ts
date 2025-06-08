@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { NextApiRequest, NextApiResponse } from 'next';
-import authenticate from '../autenticacao/authenticate';
+import authenticate from '../../v1/auth/authenticate';
 
 const prisma = new PrismaClient();
 
@@ -14,7 +14,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           Id: Number(pedido),
         },
       });
-      
+
       res.status(200).json(deletedPedidoDespacho);
     } catch (error) {
       res.status(500).json({ error: 'Erro ao deletar o pedido de despacho' });

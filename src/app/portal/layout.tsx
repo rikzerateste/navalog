@@ -1,23 +1,9 @@
 "use client";
-
-import SideBar from "@/components/portal/sideBar";
-import { useState, useEffect, ReactElement } from "react";
-import { toast, ToastContainer } from "react-toastify";
-
 import { useRouter } from "next/navigation";
+import { useState, useEffect, ReactElement } from "react";
 
-import "react-toastify/dist/ReactToastify.css";
 import styles from "./portal-layout.module.scss";
-
-const isTokenExpired = (token: any) => {
-	try {
-		const payload = JSON.parse(atob(token.split(".")[1]));
-		const expiry = payload.exp * 1000; // milissegundos
-		return Date.now() > expiry;
-	} catch (e) {
-		return true;
-	}
-};
+import SideBar from "@/components/portal/sideBar";
 
 export default function PortalPageLayout({
 	children,
@@ -27,25 +13,28 @@ export default function PortalPageLayout({
 	const router = useRouter();
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+	const isTokenExpired = (token: string) => {
+		const payload = JSON.parse(atob(token.split(".")[1]));
+		const expiry = payload.exp * 1000;
+
+		return Date.now() > expiry;
+	};
+
 	useEffect(() => {
-		const token = localStorage.getItem("token");
+		const token = localStorage.getItem("token") || "";
 
 		if (!token || isTokenExpired(token)) {
-			localStorage.removeItem("token");
+			setIsAuthenticated(false);
 			router.push("/portal/login");
 		} else {
 			setIsAuthenticated(true);
-			toast.success("Bem Vindo!");
 		}
 	}, [router]);
 
-	return isAuthenticated ? (
+	return (
 		<div className={styles.main}>
-			<SideBar />
-			<ToastContainer />
+			{isAuthenticated && <SideBar />}
 			{children}
 		</div>
-	) : (
-		<div>{children}</div>
 	);
 }

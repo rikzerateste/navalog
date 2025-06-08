@@ -1,11 +1,8 @@
 
-@import "@/app/styles/mixins/colors.scss";
-@import "@/app/styles/mixins/padding.scss";
-@import "@/app/styles/mixins/responsive.scss";
-@import "@/app/styles/mixins/fonts.scss";
-// @import "../../../../node_modules/primereact/resources/primereact.css";
-// @import "../../../../node_modules/primereact/resources/primereact.min.css";
-
+@import "@/styles/mixins/colors.scss";
+@import "@/styles/mixins/padding.scss";
+@import "@/styles/mixins/responsive.scss";
+@import "@/styles/mixins/fonts.scss";
 
 .container {
 	height: 100vh;
@@ -52,87 +49,15 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	margin-bottom: 3em;
 }
 
-.logo p {
-	margin: 0;
-}
-
-.input {
-	background: rgba(234, 240, 247, 1);
-	border: none;
-	height: 50px;
-	width: fit-content;
-	border-radius: 0 10px 10px 0;
-}
-
-.p-inputgroup {
-	background: rgb(173, 14, 144);
-	border: none;
-	border-radius: 10px 0 0 10px;
-}
-
-.button {
-	background: #1453E7;
-	border-radius: 10px;
-	width: 100%;
-
-	&:hover {
-		cursor: pointer;
-		background: #0A369D;
-	}
-}
-
-.dadosInputs {
-	margin-left: 0.5em;
-	display: grid;
-	grid-row-gap: 1em;
-}
-
-.dadosInputs a,
-.dadosInputs i {
-	margin-left: 0.5em;
-	font-size: 1em;
-	color: rgba(79, 85, 90, 1);
-	opacity: 50%;
-	font-weight: 400;
-}
-
-.checkbox {
-	margin-left: 0.5em;
-}
-
-.footer {
+.form {
 	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 	justify-content: center;
-	align-items: center;
-	position: absolute;
-	bottom: 0;
-	margin-bottom: 1.625em;
-	left: 0;
-	width: 100%;
-	color: rgba(128, 128, 128, 1);
-	opacity: 75%;
-}
 
-.errorMessage {
-	color: red;
-	margin-bottom: 10px;
-	font-size: small;
-}
-
-.line {
-	display: flex;
-	background-color: black;
-	flex-grow: 1;
-	align-items: center;
-	height: auto;
-}
-
-.spinner {
-	display: flex;
-	margin-left: 0.5em;
-	align-items: center;
-	align-content: center;
+	input, button {
+		width: 100%;
+	}
 }
