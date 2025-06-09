@@ -42,12 +42,12 @@ export default function Page() {
 
 			<div className={styles.conteudo}>
 				<div className={styles.card}>
-					<Image src={PenIcon} alt=""></Image>
+					<Image src={PenIcon} alt="pen icon"></Image>
 					<p>Cadastre empresas, embarcações e seus tripulantes</p>
 				</div>
 
 				<div className={styles.card}>
-					<Image src={PaperIcon} alt=""></Image>
+					<Image src={PaperIcon} alt="paper icon"></Image>
 					<p>Gere pedidos de despacho, lista de passageiros e CTS</p>
 				</div>
 			</div>
