@@ -12,6 +12,7 @@
   "dependencies": {
     "@jsreport/browser-client": "^3.1.1",
     "@prisma/client": "^6.7.0",
+    "@react-spring/web": "^10.0.1",
     "axios": "^1.6.8",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
@@ -30,6 +31,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@react-spring/types": "^10.0.1",
     "@types/bcrypt": "^5.0.2",
     "@types/bcryptjs": "^2.4.6",
     "@types/jsonwebtoken": "^9.0.6",

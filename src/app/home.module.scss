@@ -1,0 +1,358 @@
+@import "@/styles/mixins/fonts.scss";
+@import "@/styles/mixins/colors.scss";
+@import "@/styles/mixins/padding.scss";
+@import "@/styles/mixins/responsive.scss";
+
+.header {
+	@include Padding;
+
+	padding-top: 40px;
+	padding-bottom: 40px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	width: 100%;
+	align-items: center;
+	justify-items: stretch;
+	color: $text-primary;
+
+	@include Phone {
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+	}
+
+	.menu {
+		font-weight: 500;
+		font-size: 18px;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+
+		a + a {
+			margin-left: 40px;
+		}
+
+		@include Phone {
+			display: none;
+		}
+	}
+}
+
+.servicos {
+	background-image: linear-gradient(to left, #243b55, #141e30);
+	color: white;
+	font-weight: 300;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 50px 250px 250px 250px;
+
+	@include Phone {
+		height: 100vh;
+		justify-content: normal;
+		padding: 40px 16px;
+	}
+
+	.titulo {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 64px;
+
+		h1 {
+			@include SizeFontEXLarge;
+			margin: 0;
+			font-weight: 400;
+		}
+
+		p {
+			margin: 0;
+		}
+	}
+
+	.subTitulo {
+		@include SizeFontMedium;
+		color: #ff725e;
+		font-weight: bold;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
+}
+
+.welcome {
+	@include Padding;
+	height: 100vh;
+	width: 100%;
+	overflow-x: hidden;
+	padding-top: 100px;
+
+	@include Phone {
+		grid-template-columns: 1fr;
+		grid-template-rows: max-content;
+		min-height: 100vh;
+		height: fit-content;
+	}
+
+	.content {
+		display: grid;
+		align-items: center;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 16px;
+
+		@include Phone {
+			grid-template-columns: 1fr;
+			grid-template-rows: max-content;
+			min-height: 100vh;
+			height: fit-content;
+		}
+	}
+
+	.textInfo {
+		h1 {
+			@include SizeFontLarge;
+			font-weight: bold;
+		}
+
+		p {
+			@include SizeFontMedium;
+			// font-size: 20px;
+			font-weight: 600;
+			opacity: 0.8;
+		}
+
+		button {
+			margin-top: 20px;
+		}
+	}
+
+	.imageInfo {
+		text-align: end;
+
+		@include Phone {
+			text-align: center;
+			grid-column: 1;
+			grid-row: 1;
+		}
+
+		img {
+			@include Phone {
+				max-width: 100%;
+				max-height: 300px;
+			}
+		}
+	}
+
+	.legendaDados {
+		display: flex;
+		flex-direction: column;
+
+		.legendaTitle {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin: 0;
+		}
+
+		h1 {
+			@include SizeFontLarge;
+			margin: 0;
+		}
+
+		p {
+			@include SizeFontNormal;
+			margin: 0;
+			opacity: 0.5;
+		}
+	}
+
+	.dados {
+		margin-top: 48px;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 32px;
+
+		@include Phone {
+			margin-bottom: 32px;
+		}
+	}
+
+	.locationSpan {
+		display: flex;
+		align-items: center;
+	}
+}
+
+.contato {
+	background-image: linear-gradient(to left, #243b55, #141e30);
+	color: white;
+	font-weight: 300;
+
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	padding: 180px 250px 180px 250px;
+	gap: 32px;
+
+	@include Phone {
+		grid-template-columns: 1fr;
+		min-height: 100vh;
+		justify-content: normal;
+		padding: 40px 16px;
+	}
+
+	.titulo {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: left;
+		margin-bottom: 64px;
+
+		@include Phone {
+			align-items: center;
+			gap: 16px;
+		}
+
+		h1 {
+			@include SizeFontEXLarge;
+			margin: 0;
+			font-weight: 400;
+
+			@include Phone {
+				text-align: center;
+			}
+		}
+		p {
+			@include SizeFontSmall;
+			margin: 0;
+			color: rgba(255, 255, 255, 0.7);
+		}
+	}
+
+	.inputWrapper {
+		display: flex;
+		align-items: center;
+		padding: 8px;
+		border-bottom: 1px solid #a0abb6;
+		gap: 8px;
+	}
+
+	.forms {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 48px;
+
+		form {
+			color: #a0abb6;
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+		}
+
+		input {
+			@include SizeFontNormal;
+			color: #fff;
+			background: none;
+			border: none;
+			font-family: "lexend", sans-serif;
+			//font-size: 1rem;
+			font-weight: 500;
+			width: 100%;
+			height: 100%;
+		}
+		.input:focus {
+			background-color: red;
+			color: red;
+		}
+		input::placeholder,
+		textarea::placeholder {
+			font-family: "lexend", sans-serif;
+			color: #a0abb6;
+		}
+		input:focus-visible {
+			outline: none;
+		}
+	}
+
+	.legendaForms {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		p {
+			margin: 0;
+			color: #ffffffb3;
+		}
+	}
+
+	.mapa {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		.iframe {
+			border-radius: 32px;
+			border: none;
+			height: 100%;
+			width: 100%;
+		}
+	}
+}
+
+.footer {
+	@include Padding;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	width: 100%;
+	align-items: center;
+	justify-items: center;
+	color: #fff;
+	background-image: linear-gradient(to left, #243b55, #141e30);
+
+	p {
+		font-weight: 300;
+		color: #cfd3d7;
+	}
+
+	@include Phone {
+		@include SizeFontSmall;
+		grid-template-columns: 1fr;
+		gap: 16px;
+		padding-top: 1rem;
+	}
+
+	.menu {
+		@include SizeFontNormal;
+		font-weight: 300;
+		display: flex;
+		align-items: center;
+		a + a {
+			margin-left: 40px;
+			@include Phone {
+				margin: 0;
+			}
+		}
+
+		span {
+			display: none;
+
+			@include Phone {
+				display: flex;
+				color: $orange-primary;
+				font-weight: 600;
+			}
+		}
+
+		@include Phone {
+			flex-direction: column;
+			width: 100%;
+			gap: 8px;
+			align-items: start;
+		}
+	}
+}

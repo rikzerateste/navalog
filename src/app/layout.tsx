@@ -1,5 +1,4 @@
-// import "@/styles/globals.scss";
-import "primereact/resources/themes/lara-light-cyan/theme.css";
+import "@/styles/globals.scss";
 
 import type { Metadata } from "next";
 import { PrimeReactProvider } from "primereact/api";
