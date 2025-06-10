@@ -1,8 +1,9 @@
 import "@/styles/globals.scss";
 
 import type { Metadata } from "next";
-import { PrimeReactProvider } from "primereact/api";
 import { Lexend } from "next/font/google";
+import { PrimeReactProvider } from "primereact/api";
+import { ToastProvider } from "./contexts/toastContext";
 
 const lexend = Lexend({
 	weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -21,12 +22,14 @@ export default function Layout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<PrimeReactProvider>
-			<html lang="pt-BR" style={{ scrollBehavior: "smooth" }}>
-				<body className={lexend.className} style={{ margin: 0 }}>
-					{children}
-				</body>
-			</html>
+		<PrimeReactProvider value={{ zIndex: { toast: 1000 } }}>
+			<ToastProvider>
+				<html lang="pt-BR" style={{ scrollBehavior: "smooth" }}>
+					<body className={lexend.className} style={{ margin: 0 }}>
+						{children}
+					</body>
+				</html>
+			</ToastProvider>
 		</PrimeReactProvider>
 	);
 }

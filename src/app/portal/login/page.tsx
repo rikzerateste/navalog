@@ -8,8 +8,11 @@ import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { IconField } from "primereact/iconfield";
 import { InputIcon } from "primereact/inputicon";
+import { useToast } from "@/hooks/useToast";
 
 export default function Page() {
+	const { showToast } = useToast();
+
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [loading, setLoading] = useState(false);
@@ -30,6 +33,15 @@ export default function Page() {
 				if (token) {
 					localStorage.setItem("token", token);
 					window.location.replace("/portal");
+				}
+			})
+			.catch((err) => {
+				if (err.status === 401) {
+					showToast(
+						"Credenciais inválidas",
+						"Usuário ou senha inválidos",
+						"error"
+					);
 				}
 			})
 			.finally(() => {
