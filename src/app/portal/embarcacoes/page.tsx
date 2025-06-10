@@ -1,4 +1,4 @@
-import SideBar from "@/components/portal/sideBar";
+import SideBar from "@/components/portal/sidebar";
 import Embarcacao_Component from "@/components/portal/embarcacoes";
 import styles from "@/styles/pages/base.module.scss";
 

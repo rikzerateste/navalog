@@ -3,10 +3,10 @@ import Image from "next/image";
 import LogoWS from "/public/images/sidebar/wsicon64x64.svg";
 import PenIcon from "/public/images/pen-icon.svg";
 import PaperIcon from "/public/images/paper-icon.svg";
-import styles from "./portal.module.scss";
 import { ProgressSpinner } from "primereact/progressspinner";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import styles from "./portal.module.scss";
 
 export default function Page() {
 	const [loading, setLoading] = useState(true);

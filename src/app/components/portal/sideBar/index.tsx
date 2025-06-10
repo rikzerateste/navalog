@@ -1,28 +1,24 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-// import { Button } from 'primereact/button';
-import styles from "./styles.module.scss";
-import "primereact/resources/themes/saga-blue/theme.css";
-import "primereact/resources/primereact.min.css";
-import "primeicons/primeicons.css";
+import Link from "next/link";
+
+import { Button } from "primereact/button";
+import styles from "./sidebar.module.scss";
 
 import WSLogo from "/public/images/sidebar/wsicon-navbar.svg";
 import WSTexto from "/public/images/sidebar/wstext-navbar.svg";
-import { HomeIcon } from "./iconsSvg/index";
-import { EmpresasIcon } from "./iconsSvg/index";
 import EmbarcacoesIcon from "/public/images/sidebar/embarcacoesPage-icon.svg";
 import TripulantesIcon from "/public/images/sidebar/tripulantesPage-icon.svg";
 import ListaPassageirosIcon from "/public/images/sidebar/listaPassageirosPage-icon.svg";
 import PedidosDespachoIcon from "/public/images/sidebar/pedidoDeDespachoPage-icon.svg";
 import CTSIcon from "/public/images/sidebar/CTSPage-icon.svg";
-import DeclaracaoGeralIcon from "/public/images/sidebar/declaracaoGeralPage-icon.svg";
 import SairIcon from "/public/images/sidebar/sairPage-icon.svg";
-import ModalLogout from "../modalLogout/index";
-import Link from "next/link";
 
-const SideBar = () => {
+import ModalLogout from "../modalLogout/index";
+
+export default function SideBar() {
 	const [activeTab, setActiveTab] = useState("");
 	const [openModal, setOpenModal] = useState(false);
 
@@ -43,14 +39,10 @@ const SideBar = () => {
 		setActiveTab(lastFragment === "" ? "portal" : lastFragment);
 	}, []);
 
-	const handleItemClick = (tab: any) => {
-		setActiveTab(tab);
-		console.log(activeTab);
-	};
-
 	return (
 		<>
 			{openModal && <ModalLogout open={openModal} onClose={closeLogoutModal} />}
+
 			<div className={styles.container}>
 				<div className={styles.top}>
 					<div className={styles.logo}>
@@ -64,91 +56,103 @@ const SideBar = () => {
 							className={`${styles.button} ${
 								activeTab === "portal" ? styles.active : ""
 							}`}
-							onClick={(e) => handleItemClick("portal")}
+							onClick={() => setActiveTab("portal")}
 						>
-							<HomeIcon active={activeTab === "portal"} />
-							<span>Início</span>
+							<i className="pi pi-home" />
+							Início
 						</Link>
 
 						<div className={styles.cadastros}>
 							<span className={styles.categoriaMenu}>Cadastros</span>
+
 							<Link
-								href="/portal/empresas/page"
+								href="/portal/empresas"
 								className={`${styles.button} ${
 									activeTab === "empresas" ? styles.active : ""
 								}`}
-								onClick={(e) => handleItemClick("empresas")}
+								onClick={() => setActiveTab("empresas")}
 							>
-								<EmpresasIcon active={activeTab === "empresas"} />
-								<span>Empresas</span>
+								<i className="pi pi-building" />
+								Empresas
 							</Link>
+
 							<Link
-								href="/portal/embarcacoes/page"
+								href="/portal/embarcacoes"
 								className={`${styles.button} ${
 									activeTab === "embarcacoes" ? styles.active : ""
 								}`}
-								onClick={(e) => handleItemClick("embarcacoes")}
+								onClick={() => setActiveTab("embarcacoes")}
 							>
-								<Image src={EmbarcacoesIcon} alt={""}></Image>
-								<span>Embarcações</span>
+								<Image src={EmbarcacoesIcon} alt={"embarcações"} />
+								Embarcações
 							</Link>
+
 							<Link
-								href="/portal/tripulantes/page"
+								href="/portal/tripulantes"
 								className={`${styles.button} ${
 									activeTab === "tripulantes" ? styles.active : ""
 								}`}
-								onClick={(e) => handleItemClick("tripulantes")}
+								onClick={() => setActiveTab("tripulantes")}
 							>
-								<Image src={TripulantesIcon} alt={""}></Image>
-								<span>Tripulantes</span>
+								<Image src={TripulantesIcon} alt={"tripulantes"} />
+								Tripulantes
 							</Link>
 						</div>
 
 						<div className={styles.despachos}>
 							<span className={styles.categoriaMenu}>Despachos</span>
+
 							<Link
-								href="/portal/listaPassageiros/page"
+								href="/portal/listaPassageiros"
 								className={`${styles.button} ${
 									activeTab === "listaPassageiros" ? styles.active : ""
 								}`}
-								onClick={(e) => handleItemClick("listaPassageiros")}
+								onClick={() => setActiveTab("listaPassageiros")}
 							>
-								<Image src={ListaPassageirosIcon} alt={""}></Image>
-								<span>Lista de passageiros</span>
+								<Image
+									src={ListaPassageirosIcon}
+									alt={"lista de passageiros"}
+								/>
+								Lista de passageiros
 							</Link>
+
 							<Link
-								href="/portal/pedidoDespacho/page"
+								href="/portal/pedidoDespacho"
 								className={`${styles.button} ${
 									activeTab === "pedidoDespacho" ? styles.active : ""
 								}`}
-								onClick={(e) => handleItemClick("pedidoDespacho")}
+								onClick={() => setActiveTab("pedidoDespacho")}
 							>
-								<Image src={PedidosDespachoIcon} alt={""}></Image>
-								<span>Pedido de despacho</span>
+								<Image src={PedidosDespachoIcon} alt={"pedido de despacho"} />
+								Pedido de despacho
 							</Link>
+
 							<Link
-								href="/portal/cartaoTripulantes/page"
+								href="/portal/cartaoTripulantes"
 								className={`${styles.button} ${
 									activeTab === "cartaoTripulantes" ? styles.active : ""
 								}`}
-								onClick={(e) => handleItemClick("cartaoTripulantes")}
+								onClick={() => setActiveTab("cartaoTripulantes")}
 							>
-								<Image src={CTSIcon} alt={""}></Image>
-								<span>Cartão de Tripulação de Segurança</span>
+								<Image
+									src={CTSIcon}
+									alt={"cartão de tripulação de segurança"}
+								/>
+								Cartão de Tripulação de Segurança
 							</Link>
 						</div>
 					</div>
 				</div>
 
-				<div className={styles.sair}>
-					<a className={styles.button} onClick={logout}>
-						<Image src={SairIcon} alt={""}></Image>
-						<span>Sair</span>
-					</a>
-				</div>
+				<footer className={styles.logout}>
+					<Button
+						onClick={logout}
+						label="Sair"
+						icon="pi pi-sign-out"
+						severity="secondary"
+					/>
+				</footer>
 			</div>
 		</>
 	);
-};
-
-export default SideBar;
+}

@@ -1,31 +1,28 @@
 import axios from "axios";
-import jwt from "jsonwebtoken";
+import * as jose from "jose";
+
+const secret = process.env.NEXT_PUBLIC_SECRET_KEY;
 
 const api = axios.create({
 	baseURL: process.env.NEXT_PUBLIC_API_URL,
-})
+});
 
 api.interceptors.request.use((config) => {
 	const token = localStorage.getItem("token");
 
 	if (token) {
-		try {
-			const secret = process.env.SECRET_KEY;
-
-			if (!secret) {
-				console.error("SECRET_KEY not defined");
-				return Promise.reject(new Error("Server configuration error"));
-			}
-
-			jwt.verify(token, secret);
-			config.headers.Authorization = `Bearer ${token}`;
-		} catch (error) {
-			localStorage.removeItem("token");
-			return Promise.reject(new Error("Invalid token"));
+		if (!secret) {
+			console.error("SECRET_KEY not defined");
+			return Promise.reject(new Error("Server configuration error"));
 		}
+
+		jose.jwtVerify(token, new TextEncoder().encode(secret));
+		config.headers.Authorization = `Bearer ${token}`;
+		return config;
 	}
 
-	return config;
+	localStorage.removeItem("token");
+	return Promise.reject(new Error("Invalid token"));
 });
 
 export default api;

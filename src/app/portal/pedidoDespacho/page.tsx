@@ -1,4 +1,4 @@
-import SideBar from "@/components/portal/sideBar";
+import SideBar from "@/components/portal/sidebar";
 import PedidoDespachoComponent from "@/components/portal/pedidoDespacho";
 import styles from "@/styles/pages/base.module.scss";
 

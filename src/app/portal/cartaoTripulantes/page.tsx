@@ -1,5 +1,5 @@
 import styles from "@/styles/pages/base.module.scss";
-import SideBar from "@/components/portal/sideBar";
+import SideBar from "@/components/portal/sidebar";
 import CtsComponent from "@/components/portal/cartaoTripulantes/index";
 
 export default function CartaoTripulantes() {

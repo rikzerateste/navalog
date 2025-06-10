@@ -4,12 +4,12 @@ import { PrismaClient } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
-const SECRET_KEY = process.env.SECRET_KEY;
+const secret = process.env.NEXT_PUBLIC_SECRET_KEY;
 
 export async function POST(req: NextRequest, res: NextResponse) {
 	const { username, password } = await req.json();
 
-  if (!SECRET_KEY) {
+  if (!secret) {
     console.error("SECRET_KEY não definida.");
     return NextResponse.json({ error: 'Erro interno do servidor' }, { status: 500 });
   }
@@ -22,7 +22,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
 		return NextResponse.json({ error: 'Credenciais inválidas' }, { status: 401 });
 	}
 
-	const token = jwt.sign({ username }, SECRET_KEY, { expiresIn: '5h' });
+	const token = jwt.sign({ username }, secret, { expiresIn: '5h' });
 
 	await prisma.$disconnect();
 	return NextResponse.json({ token }, { status: 200 });
