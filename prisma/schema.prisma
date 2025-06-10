@@ -4,8 +4,7 @@ generator client {
 
 datasource db {
   provider  = "postgresql"
-  url       = env("POSTGRES_PRISMA_URL")
-  directUrl = env("POSTGRES_URL_NON_POOLING")
+  url       = env("POSTGRES_URL")
 }
 
 model atividade {
@@ -186,5 +185,5 @@ model propulsao {
 model user {
   Id       Int    @id @default(autoincrement())
   Username String @unique @db.VarChar(40)
-  Password String @db.VarChar(50)
+  Password String @db.VarChar(255)
 }

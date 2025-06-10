@@ -1,0 +1,33 @@
+.container {
+	background-color: #eeeeee;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	min-height: 100vh;
+	padding: 1rem;
+}
+
+.title {
+	font-size: 1.25em;
+	display: flex;
+	align-items: center;
+	gap: 0.5em;
+	font-family: "Poppins", sans-serif;
+}
+
+.toolbar {
+	gap: 0.4rem;
+	display: grid;
+	grid-template-columns: 1fr 12rem;
+	margin: 0 0 0.5rem 0;
+
+	input {
+		width: 100%;
+	}
+}
+
+.table {
+	overflow: hidden;
+	margin-top: 0.5rem;
+	border-radius: 1rem;
+}

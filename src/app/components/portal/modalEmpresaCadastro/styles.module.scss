@@ -1,0 +1,87 @@
+.modal {
+	padding: 0;
+	border-radius: 1rem;
+}
+
+.form {
+	padding: 1rem 1.5rem ;
+	font-size: 0.875rem;
+}
+
+.title {
+	font-size: 1.25em;
+
+	gap: 0.5em;
+	display: flex;
+	align-items: center;
+}
+
+.separator {
+	color: #aaa;
+	gap: 0.5em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	margin: 0.5rem 0;
+
+	p {
+		opacity: 0.8;
+		margin: 0;
+		font-size: 0.875rem;
+	}
+
+	hr {
+		flex-grow: 1;
+		background-color: #aaa;
+		opacity: 0.8;
+	}
+}
+
+.informacoes {
+	gap: 1rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.opcao {
+	gap: 0.275rem;
+	display: flex;
+	align-items: center;
+
+	label {
+		padding: 0;
+		white-space: nowrap;
+	}
+}
+
+.formGroup {
+	gap: 1rem;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.input {
+	height: 2em;
+	width: 100%;
+	flex-grow: 1;
+	border-radius: 1em;
+}
+
+.dropdown {
+	@extend .input;
+
+	span {
+		padding: 0.4rem 0.6rem;
+	}
+}
+
+.error {
+	border: 1px solid red;
+}
+
+.buttons {
+	gap: 1rem;
+	display: flex;
+	justify-content: flex-end;
+}

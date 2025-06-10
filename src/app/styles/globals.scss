@@ -1,0 +1,27 @@
+@import "@/styles/mixins/colors.scss";
+@import "primereact/resources/themes/lara-light-cyan/theme.css";
+@import "primeicons/primeicons.css";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: $background-primary;
+  margin: 0;
+  padding: 0;
+  color: $text-primary;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}

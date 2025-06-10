@@ -1,0 +1,74 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 20rem;
+	height: 100%;
+	background-color: #fff;
+	border-right: 1px solid #e8e8e8;
+	padding: 24px 16px;
+}
+
+.top {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+}
+
+.logo {
+	display: flex;
+	align-items: center;
+	column-gap: 8px;
+}
+
+.button {
+	display: flex;
+	align-items: center;
+	column-gap: 8px;
+	padding: 8px;
+	border-radius: 0.625rem;
+	transition: background-color 0.3s ease;
+	text-decoration: none;
+
+	span {
+		color: #7d7d7d;
+	}
+
+	&:hover {
+		cursor: pointer;
+		background-color: #ebebeb;
+
+		span {
+			color: #1453e7;
+		}
+	}
+}
+
+.cadastros {
+	display: flex;
+	flex-direction: column;
+	margin-top: 2rem;
+	gap: 8px;
+}
+
+.despachos {
+	display: flex;
+	flex-direction: column;
+	margin-top: 1rem;
+	gap: 8px;
+}
+
+.categoriaMenu {
+	font-size: 0.75em;
+	font-family: "Poppins";
+	font-weight: 400;
+}
+
+.active {
+	color: #1453e7;
+	background-color: #ebebeb;
+}
+
+.logout {
+	width: 100%;
+}
