@@ -9,9 +9,11 @@ import { InputText } from "primereact/inputtext";
 import { IconField } from "primereact/iconfield";
 import { InputIcon } from "primereact/inputicon";
 import { useToast } from "@/hooks/useToast";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
 	const { showToast } = useToast();
+	const router = useRouter();
 
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
@@ -26,13 +28,16 @@ export default function Page() {
 
 		setLoading(true);
 
+		// prevent exp error from `jose`
+		localStorage.removeItem("token");
+
 		login(username, password)
 			.then((res) => {
 				const { token } = res;
 
 				if (token) {
 					localStorage.setItem("token", token);
-					window.location.replace("/portal");
+					router.push("/portal");
 				}
 			})
 			.catch((err) => {

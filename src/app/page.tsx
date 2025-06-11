@@ -17,7 +17,6 @@ import Numero from "@/components/landingpage/numero";
 
 import axios from "axios";
 import { useFormik } from "formik";
-import * as Yup from "yup";
 
 import { SuccessModal } from "./components/landingpage/successModal";
 import { FailModal } from "./components/landingpage/failModal";
@@ -43,13 +42,13 @@ export default function Home() {
 			email: "",
 			message: "",
 		},
-		validationSchema: Yup.object({
-			name: Yup.string().required("Campo obrigatório"),
-			email: Yup.string()
-				.email("E-mail inválido")
-				.required("Campo obrigatório"),
-			message: Yup.string().required("Campo obrigatório"),
-		}),
+		// validationSchema: Yup.object({
+		// 	name: Yup.string().required("Campo obrigatório"),
+		// 	email: Yup.string()
+		// 		.email("E-mail inválido")
+		// 		.required("Campo obrigatório"),
+		// 	message: Yup.string().required("Campo obrigatório"),
+		// }),
 		onSubmit: (values) => handleSubmitForm(values),
 	});
 
