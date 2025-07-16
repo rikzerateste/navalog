@@ -1,34 +1,35 @@
 import Styles from "./servicos.module.scss"
 import Image from "next/image"
-import Star from "../../../public/images/stars.svg"
 
 const Servicos = () => {
     return (
         <div className={Styles.container}>
             <div className={Styles.titulo}>
-                <div className={Styles.subTitulo}>
-                    <Image src={Star} alt="Icone estrela"/>
-                    <p>Nossos</p>
-                </div>
                 <h1>Serviços</h1>
             </div>
 
             <div className={Styles.conteudo}>
                 <ul>
-                    <li>Abertura de rol portuário</li>
-                    <li>Agendamento de vistorias junto a capitania dos portos</li>
-                    <li>Controle de vistorias</li>
-                    <li>Emissão e renovação de título de inscrição da embarcação e atualização de provisões de registro junto ao tribunal marítimo e capitanias</li>
+                    <li>Alteração de listas de tripulantes</li>
+                    <li>Auto de infração, deslacramento e laudo pericial</li>
+                    <li>Certificado de Registro de Armador</li>
+                    <li>Embarque e desembarque de tripulante</li>
+                    <li>Emissão e Renovação do Seguro obrigatório</li>
+                    <li>Inscrição e renovação de documentos de embarcação</li>
+                    <li>Inscrição de cursos junto a Marinha</li>
+                    <li>Outorga da Anatel (emissão e renovação licença de estação de navio junto a Anatel)</li>
                     <li>Outorga da Antaq</li>
-                    <li>Renovação de CIR</li>
-                    <li>Acompanhamento de vistorias</li>
-                    <li>Ascensão de categoria</li>
-                    <li>Emissão e renovação de CRA</li>
-                    <li>Licença Estação de Navio: Emissão e renovação junto a Anatel</li>
-                    <li>Pedido de despachos</li>
-                    <li>Segunda via da CIR</li>
-                    <li>Solicitação do Registro Especial Brasileiro</li>
+                    <li>Pedido de passe de saída junto a Marinha do Brasil</li>
+                    <li>Registro Especial Brasileiro (REB)</li>
+                    <li>Renovação de arrais armador</li>
+                    <li>Renovação e atualização de CIR</li>
                 </ul>
+                <Image
+                    src="/images/fig_service.png"
+                    alt="Descrição da imagem para acessibilidade"
+                    width={500} 
+                    height={500} 
+                />
             </div>
         </div>
     )

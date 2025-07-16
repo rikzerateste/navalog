@@ -9,16 +9,16 @@
     cursor: pointer;
     transition-duration: 0.4s;
 
-    &.primary{
+   /*  &.primary{
         background-color: $blue-primary;
     }
 
     &.secondary{
         background-color: $orange-primary;
-    }
+    } */
 
     &.enviarForm{
-        background-color: $orange-primary;
+        background-color: #2679F3;
         border-radius: 180px;
         font-size: 1rem;
         padding: 16px;

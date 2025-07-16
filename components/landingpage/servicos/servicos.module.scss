@@ -3,15 +3,13 @@
 
 
 .container {
-    background-image: linear-gradient(to left, #243B55, #141E30);
-    color: white;
+    background-image: linear-gradient(to bottom, #E2EEFD, #ffffff);
+    color: #202124;
     font-weight: 300;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    padding: 50px 250px 250px 250px;
+    padding: 64px 120px 0px 120px;
 
     @include Phone{
         height: 100vh;
@@ -24,13 +22,12 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    margin-bottom: 64px;
+    margin-bottom: 32px;
 
     h1{
         @include SizeFontEXLarge;
         margin: 0;
-        //font-size: 3rem;
+        font-family: "Geist", sans-serif;
         font-weight: 400;
     }
     p{
@@ -38,13 +35,16 @@
     }
 }
 
-.subTitulo{
-    @include SizeFontMedium;
-    color: #FF725E;
-    font-weight: bold;
-    //font-size: 1.25rem;
+.conteudo{
+    font-family: "Geist", sans-serif;
+    margin-bottom: 50px;
     display: flex;
-    align-items: center;
-    gap: 8px;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
 }
 
+.conteudo ul li {
+    margin-left: -16px;
+    margin-bottom: 8px;
+}

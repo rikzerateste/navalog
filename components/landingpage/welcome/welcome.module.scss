@@ -8,8 +8,11 @@
     height: 100vh;
     width: 100%;
     overflow-x: hidden;
-    padding-top: 100px;
-    
+    background-image: linear-gradient(to bottom, white, #E2EEFD);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     @include Phone{
         grid-template-columns: 1fr;
         grid-template-rows: max-content;
@@ -20,8 +23,6 @@
     .content{
         display: grid;
         align-items: center;
-        grid-template-columns: repeat(2,1fr);
-        gap: 16px;
 
         @include Phone{
             grid-template-columns: 1fr;
@@ -33,80 +34,76 @@
 
 }
 
-.textInfo{
-    
-    
-    h1{
-        @include SizeFontLarge;
-        // font-size: 32px;
-        font-weight: bold;
-    }
-    p{
-        @include SizeFontMedium;
-        // font-size: 20px;
-        font-weight: 600;
-        opacity: 0.8;
-    }
-    Button{
-        margin-top: 20px;
-    }
-}
-
-.imageInfo{
-    text-align: end;
-
-    @include Phone{
-        text-align: center;
-        grid-column: 1;
-        grid-row: 1;
-    }
-
-    img{
-        @include Phone{
-            max-width: 100%;
-            max-height: 300px;
-        }
-    }
-    
-}
-
-.legendaDados{
+.textInfo {
     display: flex;
     flex-direction: column;
+    align-items: center;
 
-    .legendaTitle{
+    h1 {
+        @include SizeFontLarge;
+        font-size: 64px;
+        font-weight: 600;
+        max-width: 700px;
+        text-align: center;
+        line-height: 1.1;
+        font-family: "Geist", sans-serif;
+        color: #202020;
+        margin: 0;
+    }
+
+    p {
+        @include SizeFontMedium;
+        font-size: 18px;
+        font-weight: 400;
+        color: #666666;
+        max-width: 700px;
+        text-align: center;
+        font-family: "Geist", sans-serif;
+        margin: 0;
+        margin-top: 24px;
+    }
+
+    .buttoncontainer {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+        margin-top: 24px;
+    }
+
+    .btn1 {
+        background-color: #2679F3;
+        color: #fff;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+        font-weight: 500;
+        font-family: "Geist", sans-serif;
+    }
+
+    .btn1:hover {
+        background-color: #2262C7;
+    }
+
+    .btn2 {
+        background-color: #D3E1EE;
+        color: #202020;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+        font-weight: 500;
+        font-family: "Geist", sans-serif;
         display: flex;
         align-items: center;
-        gap: 8px;
-        margin: 0;
-        // font-size: 1.5rem;
-    }    
-
-    h1{
-        @include SizeFontLarge;
-        margin: 0;
+        gap: 4px;
     }
 
-    p{
-        @include SizeFontNormal;
-        // font-size: 1rem;
-        margin: 0;
-        opacity: 0.5;
+    .btn2:hover {
+        background-color: #b4c7d8;
     }
-}
-
-.dados{
-    margin-top: 48px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 32px;
-
-    @include Phone{
-        margin-bottom: 32px;
-    }
-}
-
-.locationSpan{
-    display: flex;
-    align-items: center;
 }

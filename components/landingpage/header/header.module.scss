@@ -2,37 +2,102 @@
 @import "../../../styles/mixins/padding.scss";
 @import "../../../styles/mixins/responsive.scss";
 
+.logotipo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: "Ancizar Serif", serif;
+  color: #112e40;
+  font-weight: 600;
+  font-size: 20px;
+}
 
 .header {
     @include Padding;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding: 12px 120px 12px 120px;
     display: grid;
     grid-template-columns: repeat(2,1fr);
-    //grid-template-columns: repeat(3,1fr);
     width: 100%;
     align-items: center;
     justify-items: stretch;
-    color: $text-primary;
+    color: #000000;
+    background-color: #ffffff;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+    border-bottom: 1px solid #E5E5E5;
 
-    @include Phone{
+    @include Phone {
         padding-top: 1rem;
         padding-bottom: 1rem;
     }
+
+    &.scrolled {
+        background-color: #ffffff;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
 }
 
-.menu{
-    font-weight: 500;
-    font-size: 18px;
+.menu {
+    font-weight: 400;
+    font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-//  margin-inline: 32px;
-    a+a{
+    
+    button {
+            background-color: #112e40; /* Cor de fundo */
+            color: #fff; /* Cor do texto */
+            border: none; /* Tira a borda padrão */
+            padding: 8px 14px; /* Espaçamento interno */
+            border-radius: 6px; /* Bordas arredondadas */
+            cursor: pointer; /* Muda o cursor para "mãozinha" */
+            font-size: 14px; /* Tamanho do texto */
+            transition: background-color 0.3s ease; /* Suaviza a mudança de cor */
+            //margin-top: 24px;
+            font-weight: 500;
+            font-family: "Geist", sans-serif;
+            margin-left: 40px;
+
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        button:hover {
+            background-color: #36373A; /* Cor quando passar o mouse */
+        }
+
+    a {
+        position: relative;
+        color: #000000;
+        text-decoration: none;
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            background-color: #000000;
+            transition: width 0.3s ease;
+        }
+
+        &:hover::after {
+            width: 100%;
+        }
+    }
+
+    a + a {
         margin-left: 40px;
     }
 
-    @include Phone{
+    @include Phone {
         display: none;
     }
 }
