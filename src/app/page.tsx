@@ -95,10 +95,6 @@ export default function Home() {
 						</button>
 					</a>
 				</div>
-
-				<a href="#contato">
-					<Button label="Fale conosco" severity="secondary" />
-				</a>
 			</div>
 
 			<section id="servicos" className={styles.servicos}>
@@ -151,6 +147,7 @@ export default function Home() {
 								Bonita-SP
 							</p>
 						</div>
+
 						<div className={styles.titulo}>
 							<p>
 								<b>ferpestanadespachantefluvial@gmail.com</b>
@@ -159,22 +156,11 @@ export default function Home() {
 								<b>(14) 99848-7775</b>
 							</p>
 						</div>
-
-						<div className={styles.mapa}>
-							<iframe
-								src="https://www.google.com/maps/embed?pb=!3m2!1spt-BR!2sbr!4v1752516639169!5m2!1spt-BR!2sbr!6m8!1m7!1sPzuCIPx8Z5siR7eJtF5dWg!2m2!1d-22.4920317301662!2d-48.55647945021897!3f340.9124889437429!4f-13.29135232859474!5f0.4000000000000002"
-								allowFullScreen
-								loading="lazy"
-								referrerPolicy="no-referrer-when-downgrade"
-								className={styles.iframe}
-							></iframe>
-						</div>
 					</div>
-
 					<div className={styles.mapa}>
 						<iframe
-							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7372.50405603131!2d-48.56325291671458!3d-22.49472541119266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c74f7d2f4993b7%3A0x7385fc62826dd20d!2sWS%20Com%C3%A9rcio%20Despachos%20Fluviais!5e0!3m2!1spt-BR!2sbr!4v1712512761888!5m2!1spt-BR!2sbr"
-							allowFullScreen={true}
+							src="https://www.google.com/maps/embed?pb=!3m2!1spt-BR!2sbr!4v1752516639169!5m2!1spt-BR!2sbr!6m8!1m7!1sPzuCIPx8Z5siR7eJtF5dWg!2m2!1d-22.4920317301662!2d-48.55647945021897!3f340.9124889437429!4f-13.29135232859474!5f0.4000000000000002"
+							allowFullScreen
 							loading="lazy"
 							referrerPolicy="no-referrer-when-downgrade"
 							className={styles.iframe}

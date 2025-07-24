@@ -1,11 +1,11 @@
 import "@/styles/globals.scss";
 
 import type { Metadata } from "next";
-import { Lexend } from "next/font/google";
+import { Geist } from "next/font/google";
 import { PrimeReactProvider } from "primereact/api";
 import { ToastProvider } from "./contexts/toastContext";
 
-const lexend = Lexend({
+const geist = Geist({
 	weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 	style: ["normal"],
 	subsets: ["latin"],
@@ -25,7 +25,7 @@ export default function Layout({
 		<PrimeReactProvider value={{ zIndex: { toast: 1000 } }}>
 			<ToastProvider>
 				<html lang="pt-BR" style={{ scrollBehavior: "smooth" }}>
-					<body className={lexend.className} style={{ margin: 0 }}>
+					<body className={geist.className} style={{ margin: 0 }}>
 						{children}
 					</body>
 				</html>
