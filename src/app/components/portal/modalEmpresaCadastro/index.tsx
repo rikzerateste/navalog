@@ -12,7 +12,7 @@ import { InputText } from "primereact/inputtext";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { InputMask } from "primereact/inputmask";
 import { Estado, getEstados } from "@/services/estados";
-import { createEmpresa, Empresa, updateEmpresa } from "@/services/empresas";
+import { Empresa, createEmpresa, updateEmpresa } from "@/services/empresas";
 import { useToast } from "@/hooks/useToast";
 
 interface ModalEmpresaCadastroProps {

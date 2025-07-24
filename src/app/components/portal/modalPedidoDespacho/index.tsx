@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Dropdown } from "primereact/dropdown";
 import { InputText } from "primereact/inputtext";
 import { InputNumber } from "primereact/inputnumber";
@@ -221,11 +221,15 @@ const ModalDespachoCadastro: React.FC<ModalDespachoCadastroProps> = ({
 
 	const [loadingSubmit, setLoadingSubmit] = useState(false);
 
-	const {showToast} = useToast();
+	const { showToast } = useToast();
 
 	const handleSubmit = async () => {
 		if (!validateDespachoFields()) {
-			return showToast("Erro", "Por favor, preencha todos os campos obrigatórios.","error");
+			return showToast(
+				"Erro",
+				"Por favor, preencha todos os campos obrigatórios.",
+				"error"
+			);
 		} else {
 			setLoadingSubmit(true);
 			const token = localStorage.getItem("token");
@@ -255,7 +259,7 @@ const ModalDespachoCadastro: React.FC<ModalDespachoCadastroProps> = ({
 			} catch (error) {
 				setLoadingSubmit(true);
 
-				showToast("Erro", "Erro ao cadastrar a pedido de despacho!","error");
+				showToast("Erro", "Erro ao cadastrar a pedido de despacho!", "error");
 			}
 		}
 	};
@@ -717,12 +721,7 @@ const ModalDespachoCadastro: React.FC<ModalDespachoCadastroProps> = ({
 						</div>
 					</div>
 					<div className={styles.botoes}>
-						<Button
-							
-							label="Cancelar"
-							onClick={onClose}
-							
-						/>
+						<Button label="Cancelar" onClick={onClose} />
 						{/* {loadingSubmit == true ? (
 							<PrimeButton
 								tipoBotao="normal"
@@ -746,7 +745,6 @@ const ModalDespachoCadastro: React.FC<ModalDespachoCadastroProps> = ({
 							/>
 						)} */}
 						<Button
-							
 							label={despacho ? "Atualizar" : "Salvar"}
 							onClick={onClose}
 							loading={loadingSubmit}

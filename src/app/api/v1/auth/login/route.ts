@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from 'next/server';
 const prisma = new PrismaClient();
 const secret = process.env.NEXT_PUBLIC_SECRET_KEY;
 
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
 	const { username, password } = await req.json();
 
   if (!secret) {

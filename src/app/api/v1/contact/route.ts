@@ -1,7 +1,7 @@
-import { SMTPClient } from 'emailjs';
 import { NextRequest, NextResponse } from 'next/server';
+import { SMTPClient } from 'emailjs';
 
-export default async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
 	const { messageBody, nameBody } = await req.json();
 
 	const client = new SMTPClient({

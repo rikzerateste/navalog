@@ -1,6 +1,6 @@
 "use client";
 //import useSWR from "swr";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 //import Button from "../button/index";
 import { Button } from "primereact/button";
@@ -300,10 +300,8 @@ const Page = () => {
 						onChange={handleSearch}
 					/>
 					<Button
-						
 						label="Nova Lista"
 						icon=" pi pi-plus-circle"
-					
 						onClick={openModal}
 					/>
 				</div>

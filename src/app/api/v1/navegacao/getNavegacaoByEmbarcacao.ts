@@ -1,13 +1,12 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
-import authenticate from "../../v1/auth/authenticate";
 
 const prisma = new PrismaClient();
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (req: NextRequest) => {
     if(req.method === 'GET') {
 
-        const { inscricao } = req.query;
+        const inscricao = req.nextUrl.searchParams.get("inscricao");
 
         try {
             const embarcacao = await prisma.embarcacao.findUnique({
@@ -18,16 +17,16 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             });
 
             if(!embarcacao) {
-                return res.status(404).json({error: "Embarcação não encontrada."});
+                return NextResponse.json({error: "Embarcação não encontrada."}, {status: 404});
             }
 
-            res.status(200).json(embarcacao.navegacao);
+            return NextResponse.json(embarcacao.navegacao, {status: 200});
         } catch(error) {
-            return res.status(500).json({ error: "Erro ao buscar embarcação." });
+            return NextResponse.json({ error: "Erro ao buscar embarcação." }, {status: 500});
         }
     } else {
-        return res.status(405).json({ message: "Método não permitido" });
+        return NextResponse.json({ message: "Método não permitido" }, {status: 405});
     }
 }
 
-export default authenticate(handler);
+export default handler;

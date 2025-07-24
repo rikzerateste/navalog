@@ -1,5 +1,5 @@
 "use client";
-import { useSpring, animated } from "@react-spring/web";
+import { animated, useSpring } from "@react-spring/web";
 
 const Numero = ({ n }: { n: number }) => {
 	const { number } = useSpring({

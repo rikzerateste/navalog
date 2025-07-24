@@ -127,11 +127,15 @@ const ModalTripulanteCadastro: React.FC<ModalTripulanteCadastroProps> = ({
 
 	const [loadingSubmit, setLoadingSubmit] = useState(false);
 
-	const {showToast} = useToast();
+	const { showToast } = useToast();
 
 	const handleSubmit = async () => {
 		if (!validateTripulanteFields()) {
-			return showToast("Error", "Por favor, preencha todos os campos obrigatórios.", "error");
+			return showToast(
+				"Error",
+				"Por favor, preencha todos os campos obrigatórios.",
+				"error"
+			);
 		} else {
 			setLoadingSubmit(true);
 			const token = localStorage.getItem("token");
@@ -323,12 +327,7 @@ const ModalTripulanteCadastro: React.FC<ModalTripulanteCadastroProps> = ({
 						</div>
 					</div>
 					<div className={styles.botoes}>
-						<Button
-							
-							label="Cancelar"
-							onClick={onClose}
-							
-						/>
+						<Button label="Cancelar" onClick={onClose} />
 						{/* {loadingSubmit == true ? (
 							<PrimeButton
 								tipoBotao="normal"
@@ -351,10 +350,9 @@ const ModalTripulanteCadastro: React.FC<ModalTripulanteCadastroProps> = ({
 							/>
 						)} */}
 						<Button
-							
 							label={editing ? "Atualizar" : "Salvar"}
 							onClick={onClose}
-							loading={loadingSubmit}	
+							loading={loadingSubmit}
 						/>
 					</div>
 				</div>

@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { PrismaClient } from "@prisma/client";
-import authenticate from '../../v1/auth/authenticate';
+
 
 const prisma = new PrismaClient();
 
@@ -29,4 +29,4 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default authenticate(handler);
+export default handler;

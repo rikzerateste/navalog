@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
 import { InputText } from "primereact/inputtext";
@@ -245,11 +245,15 @@ const ModalEmbascacoesCadastro: React.FC<ModalEmbascacoesCadastroProps> = ({
 	};
 	const [loadingSubmit, setLoadingSubmit] = useState(false);
 
-	const {showToast} = useToast();
+	const { showToast } = useToast();
 
 	const handleSubmit = async () => {
 		if (!validateFields()) {
-			return showToast("Errro","Por favor, preencha todos os campos obrigatórios.","error");
+			return showToast(
+				"Errro",
+				"Por favor, preencha todos os campos obrigatórios.",
+				"error"
+			);
 		}
 
 		setLoadingSubmit(true);
@@ -278,7 +282,11 @@ const ModalEmbascacoesCadastro: React.FC<ModalEmbascacoesCadastroProps> = ({
 		} catch (error) {
 			setLoadingSubmit(false);
 
-			showToast("Erro", "Erro ao cadastrar a embarcação, preencha os campos!", "error");
+			showToast(
+				"Erro",
+				"Erro ao cadastrar a embarcação, preencha os campos!",
+				"error"
+			);
 		}
 	};
 	const criarEmbarcacao = async () => {
@@ -612,10 +620,7 @@ const ModalEmbascacoesCadastro: React.FC<ModalEmbascacoesCadastroProps> = ({
 					</div>
 
 					<div className={styles.botoes}>
-						<Button
-							title="Cancelar"
-							onClick={onClose}
-						/>
+						<Button title="Cancelar" onClick={onClose} />
 						{/* {loadingSubmit == true ? (
 							<PrimeButton
 								tipoBotao="normal"

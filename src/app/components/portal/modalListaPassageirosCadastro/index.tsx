@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { InputText } from "primereact/inputtext";
 import axios from "axios";
 import styles from "./styles.module.scss";
@@ -316,7 +316,7 @@ const ModalCadastroEdicao: React.FC<ModalCadastroEdicaoProps> = ({
 	const [lpeComboiosLocal, setLpeComboiosLocal] = useState<LPEComboio[]>([]);
 	const [lpedsLocal, setLpedsLocal] = useState<LPED[]>([]);
 
-	const {showToast} = useToast();
+	const { showToast } = useToast();
 
 	const handleAddLpeComboio = () => {
 		if (embarcacaoSelecionada) {
@@ -346,7 +346,7 @@ const ModalCadastroEdicao: React.FC<ModalCadastroEdicaoProps> = ({
 					return updatedList;
 				});
 			} else {
-				showToast("Erro", "Comboio já existente!","error");
+				showToast("Erro", "Comboio já existente!", "error");
 			}
 		}
 	};
@@ -367,7 +367,7 @@ const ModalCadastroEdicao: React.FC<ModalCadastroEdicaoProps> = ({
 			} else {
 				setError("Tripulante já existente!");
 
-				showToast("Erro","Tripulante já existente!","error");
+				showToast("Erro", "Tripulante já existente!", "error");
 			}
 		}
 	};
@@ -485,7 +485,11 @@ const ModalCadastroEdicao: React.FC<ModalCadastroEdicaoProps> = ({
 
 	const handleSubmit = async () => {
 		if (!validateFields()) {
-			return showToast("Erro","Por favor, preencha todos os campos obrigatórios.","error");
+			return showToast(
+				"Erro",
+				"Por favor, preencha todos os campos obrigatórios.",
+				"error"
+			);
 		}
 
 		const token = localStorage.getItem("token");
@@ -598,12 +602,12 @@ const ModalCadastroEdicao: React.FC<ModalCadastroEdicaoProps> = ({
 				}
 
 				setLoadingSubmit(false);
-				showToast("Sucesso","Atualizado com sucesso!","success");
+				showToast("Sucesso", "Atualizado com sucesso!", "success");
 				onClose();
 				window.location.reload();
 			}
 		} catch (error) {
-			showToast("Erro","Erro ao atualizar os dados:", "error");
+			showToast("Erro", "Erro ao atualizar os dados:", "error");
 		}
 	};
 
@@ -826,11 +830,9 @@ const ModalCadastroEdicao: React.FC<ModalCadastroEdicaoProps> = ({
 								{error && <div className={styles.errorMessage}>{error}</div>}
 							</div>
 							<Button
-								
 								icon=" pi pi-plus-circle"
 								label="Adicionar"
 								onClick={handleAddLped}
-								
 							/>
 						</div>
 
@@ -990,11 +992,9 @@ const ModalCadastroEdicao: React.FC<ModalCadastroEdicaoProps> = ({
             </div> */}
 							<div className={styles.opcao}>
 								<Button
-									
 									icon=" pi pi-plus-circle"
 									label="Adicionar Comboio"
 									onClick={handleAddLpeComboio}
-									
 								/>
 							</div>
 						</div>
@@ -1071,12 +1071,7 @@ const ModalCadastroEdicao: React.FC<ModalCadastroEdicaoProps> = ({
 					</div>
 
 					<div className={styles.botoes}>
-						<Button
-							
-							label="Cancelar"
-							onClick={onClose}
-							
-						/>
+						<Button label="Cancelar" onClick={onClose} />
 						{/* {loadingSubmit == true ? (
 							<PrimeButton
 								tipoBotao="normal"
@@ -1098,7 +1093,6 @@ const ModalCadastroEdicao: React.FC<ModalCadastroEdicaoProps> = ({
 							/>
 						)} */}
 						<Button
-							
 							label={embarcacao ? "Salvar" : "Atualizar"}
 							onClick={onClose}
 							loading={loading}

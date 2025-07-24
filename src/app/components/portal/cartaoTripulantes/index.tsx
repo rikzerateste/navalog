@@ -1,7 +1,7 @@
 "use client";
 //import useSWR from "swr";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Button } from "primereact/button";
 import styles from "./styles.module.scss";

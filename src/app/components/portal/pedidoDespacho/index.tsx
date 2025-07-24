@@ -1,7 +1,7 @@
 "use client";
 //import useSWR from "swr";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 //import Button from "../button/index";
 import styles from "./styles.module.scss";
@@ -361,10 +361,8 @@ const Page = () => {
 						onChange={handleSearch}
 					/>
 					<Button
-						
 						label="Novo Despacho"
 						icon=" pi pi-plus-circle"
-						
 						onClick={openModal}
 					/>
 				</div>

@@ -4,12 +4,12 @@ import { NextRequest, NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
-export async function GET(req: NextRequest, res: NextResponse) {
+export async function GET(req: NextRequest) {
 	const empresas = await prisma.empresa.findMany();
 	return NextResponse.json(empresas);
 }
 
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
 	const data = await req.json() as Empresa;
 
 	const empresa = await prisma.empresa.create({ data });
