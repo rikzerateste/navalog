@@ -2,8 +2,6 @@
 @import "../../../styles/mixins/fonts.scss";
 
 .container {
-  //background-image: linear-gradient(to left, #243B55, #141E30);
-  //color: black;
   background-image: linear-gradient(to bottom, white, #E2EEFD);
   font-weight: 300;
   font-family: "Geist", sans-serif;
@@ -12,7 +10,6 @@
   gap: 32px;
   padding: 64px 120px;
   width: 100%;
-  //align-items: center;
 
   @include Phone {
     display: flex;

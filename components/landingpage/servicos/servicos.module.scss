@@ -12,9 +12,13 @@
     padding: 64px 120px 0px 120px;
 
     @include Phone{
-        height: 100vh;
+        // Remova ou altere esta linha para que a altura seja automática.
+        // height: 100vh; // <-- REMOVA OU COMENTE ESTA LINHA
         justify-content: normal;
         padding: 40px 16px;
+
+        // Adicione um espaçamento inferior para garantir que a próxima seção não fique colada.
+        //padding-bottom: 60px; // Ajuste este valor conforme necessário
     }
 }
 
@@ -42,6 +46,14 @@
     justify-content: center;
     align-items: flex-start;
     gap: 40px;
+
+    @include Phone {
+        // Altera a direção do flexbox para que os itens fiquem um abaixo do outro
+        flex-direction: column; 
+        
+        // Centraliza os itens horizontalmente se necessário
+        align-items: center; 
+    }
 }
 
 .conteudo ul li {

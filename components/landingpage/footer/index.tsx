@@ -8,7 +8,7 @@ const Footer = () => {
                 {<Image src="/images/LogoFerRodape.png" alt={""} width={64} height={64}  ></Image>}
             </div>
             
-            <p>©Todos os direitos reservados. Fernanda Pestana Despachante Fluvial</p>
+            <p>Fernanda Pestana Despachante Fluvial<br></br>©Todos os direitos reservados.</p>
         </footer>
     )
 }
