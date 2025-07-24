@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 //import Button from "../button/index";
 import { Button } from "primereact/button";
@@ -70,7 +70,7 @@ const Page = () => {
 		}
 	};
 
-	const fetchData = async () => {
+	const fetchData = useCallback(async () => {
 		const token = localStorage.getItem("token");
 		if (token) {
 			if (isTokenExpired(token)) {
@@ -104,11 +104,11 @@ const Page = () => {
 		} else {
 			window.location.href = "http://localhost:3000/portal";
 		}
-	};
+	}, []);
 
 	useEffect(() => {
 		fetchData();
-	}, []);
+	}, [fetchData]);
 
 	const deleteEmbarcacao = async (inscricao: any) => {
 		const token = localStorage.getItem("token");
@@ -191,15 +191,7 @@ const Page = () => {
 		setModal(true);
 	};
 
-	useEffect(() => {
-		pesquisaEmbarcacao();
-	}, [searchTerm, embarcacoes]);
-
-	const handleSearch = (event: any) => {
-		setSearchTerm(event.target.value);
-	};
-
-	const pesquisaEmbarcacao = () => {
+	const pesquisaEmbarcacao = useCallback(() => {
 		if (searchTerm === "") {
 			setEmbarcacoesFiltradas(embarcacoes);
 		} else {
@@ -209,6 +201,14 @@ const Page = () => {
 				)
 			);
 		}
+	}, [searchTerm, embarcacoes]);
+
+	useEffect(() => {
+		pesquisaEmbarcacao();
+	}, [pesquisaEmbarcacao]);
+
+	const handleSearch = (event: any) => {
+		setSearchTerm(event.target.value);
 	};
 
 	return (

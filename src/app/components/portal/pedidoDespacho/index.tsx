@@ -1,7 +1,7 @@
 "use client";
 //import useSWR from "swr";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 //import Button from "../button/index";
 import styles from "./styles.module.scss";
@@ -115,7 +115,7 @@ const Page = () => {
 		}
 	};
 
-	const fetchData = async () => {
+	const fetchData = useCallback(async () => {
 		setLoading(true);
 		const token = localStorage.getItem("token"); // ou obtenha o token de onde você está armazenando
 		if (token) {
@@ -143,11 +143,11 @@ const Page = () => {
 		} else {
 			window.location.href = "http://localhost:3000/portal";
 		}
-	};
+	}, []);
 
 	useEffect(() => {
 		fetchData();
-	}, []);
+	}, [fetchData]);
 
 	const deleteDespacho = async (pedido: number) => {
 		const token = localStorage.getItem("token");

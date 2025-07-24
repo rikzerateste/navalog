@@ -105,7 +105,7 @@ const ModalCTSCadastro: React.FC<ModalCTSCadastroProps> = ({
 		}));
 	};
 
-	const {showToast} = useToast();
+	const { showToast } = useToast();
 
 	const addTripulante = () => {
 		if (!novoTripulante.Tipo_de_Tripulante) {
@@ -234,7 +234,7 @@ const ModalCTSCadastro: React.FC<ModalCTSCadastroProps> = ({
 			});
 			setEditing(false);
 		}
-	}, [cts]);
+	}, [cts, novoCTS]);
 
 	const [loading, setLoading] = useState(false);
 	const [ctsErrors, setctsErrors] = useState<{ [key: string]: boolean }>({});
@@ -252,7 +252,11 @@ const ModalCTSCadastro: React.FC<ModalCTSCadastroProps> = ({
 
 	const handleSubmit = async () => {
 		if (!validateFields()) {
-			return showToast("erro", "Por favor, preencha todos os campos obrigatórios.", "error");
+			return showToast(
+				"erro",
+				"Por favor, preencha todos os campos obrigatórios.",
+				"error"
+			);
 		} else {
 			setLoading(true);
 
@@ -415,12 +419,9 @@ const ModalCTSCadastro: React.FC<ModalCTSCadastroProps> = ({
 							</div>
 
 							<Button
-								
 								icon=" pi pi-plus-circle"
 								label="Adicionar"
 								onClick={addTripulante}
-								
-								
 							/>
 						</div>
 
@@ -568,14 +569,10 @@ const ModalCTSCadastro: React.FC<ModalCTSCadastroProps> = ({
 					</div>
 					{/* BOTÕES */}
 					<div className={styles.botoes}>
-						<Button
-							label="Cancelar"
-							onClick={onClose}
-
-						/>
+						<Button label="Cancelar" onClick={onClose} />
 						{/* {loading == true ? (
 							<Button
-								
+
 								label={
 									<ProgressSpinner
 										style={{ width: "20px", height: "20px" }}
@@ -584,21 +581,20 @@ const ModalCTSCadastro: React.FC<ModalCTSCadastroProps> = ({
 									/>
 								}
 								disabled
-								
+
 							/>
 						) : (
 							<Button
-								
+
 								label={editing ? "Atualizar" : "Salvar"}
 								onClick={handleSubmit}
-								
+
 							/>
 						)} */}
 						<Button
 							label={editing ? "Atualizar" : "Salvar"}
 							onClick={onClose}
 							loading={loading}
-
 						/>
 					</div>
 				</div>

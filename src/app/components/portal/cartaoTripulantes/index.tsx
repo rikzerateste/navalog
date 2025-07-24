@@ -1,7 +1,7 @@
 "use client";
 //import useSWR from "swr";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { Button } from "primereact/button";
 import styles from "./styles.module.scss";
@@ -73,7 +73,7 @@ const Page = () => {
 			return true;
 		}
 	};
-	const fetchData = async () => {
+	const fetchData = useCallback(async () => {
 		setLoading(true);
 		const token = localStorage.getItem("token");
 		if (token) {
@@ -98,11 +98,11 @@ const Page = () => {
 		} else {
 			window.location.href = "http://localhost:3000/portal";
 		}
-	};
+	}, []);
 
 	useEffect(() => {
 		fetchData();
-	}, []);
+	}, [fetchData]);
 
 	const deleteCTS = async (CTS_controle: any) => {
 		const token = localStorage.getItem("token");

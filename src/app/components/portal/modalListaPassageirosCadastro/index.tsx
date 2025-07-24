@@ -252,7 +252,7 @@ const ModalCadastroEdicao: React.FC<ModalCadastroEdicaoProps> = ({
 				Comandante: "",
 			});
 		}
-	}, [passageiro]);
+	}, [lped, passageiro]);
 
 	const handleLpeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;

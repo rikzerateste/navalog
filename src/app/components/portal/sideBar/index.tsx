@@ -14,7 +14,6 @@ import TripulantesIcon from "/public/images/sidebar/tripulantesPage-icon.svg";
 import ListaPassageirosIcon from "/public/images/sidebar/listaPassageirosPage-icon.svg";
 import PedidosDespachoIcon from "/public/images/sidebar/pedidoDeDespachoPage-icon.svg";
 import CTSIcon from "/public/images/sidebar/CTSPage-icon.svg";
-import SairIcon from "/public/images/sidebar/sairPage-icon.svg";
 
 import ModalLogout from "../modalLogout/index";
 

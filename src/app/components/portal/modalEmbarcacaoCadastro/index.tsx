@@ -159,7 +159,7 @@ const ModalEmbascacoesCadastro: React.FC<ModalEmbascacoesCadastroProps> = ({
 		fetchNavegacao();
 		fetchPropulsao();
 		console.log(propulsao);
-	}, []);
+	}, [propulsao]);
 
 	const [selectedEmpresa, setSelectedEmpresa] = useState();
 	const [editing, setEditing] = useState(false);

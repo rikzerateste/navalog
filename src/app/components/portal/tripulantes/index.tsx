@@ -1,27 +1,17 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
-//import Button from "../button/index";
 import { Button } from "primereact/button";
 import styles from "./styles.module.scss";
-import "primereact/resources/themes/saga-blue/theme.css";
-import "primereact/resources/primereact.min.css";
-import "primeicons/primeicons.css";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-//import { Button as PrimeButton } from "primereact/button";
 import ModalTripulanteCadastro from "@/components/portal/modalTripulanteCadastro/index";
 import InputSearch from "../input/index";
-import { Skeleton } from "primereact/skeleton";
 import { ProgressBar } from "primereact/progressbar";
-import { ProgressSpinner } from "primereact/progressspinner";
-import ConfirmDialog from "../confirmDialog/index"; // Importando o modal de confirmação
-//import { toast, ToastContainer } from "react-toastify";
-//import "react-toastify/dist/ReactToastify.css";
-import Image from "next/image";
+import ConfirmDialog from "../confirmDialog/index";
 import TripulanteIcon from "/public/images/tripulantes-page.svg";
-import { useToast } from "@/hooks/useToast";
+import Image from "next/image";
 
 const Page = () => {
 	const [search, setSearch] = useState("");
@@ -49,7 +39,7 @@ const Page = () => {
 			return true;
 		}
 	};
-	const fetchData = async () => {
+	const fetchData = useCallback(async () => {
 		const token = localStorage.getItem("token");
 		if (token) {
 			if (isTokenExpired(token)) {
@@ -72,11 +62,11 @@ const Page = () => {
 		} else {
 			window.location.href = "http://localhost:3000/portal";
 		}
-	};
+	}, []);
 
 	useEffect(() => {
 		fetchData();
-	}, []);
+	}, [fetchData]);
 
 	const deletePessoal = async (documento: any) => {
 		const token = localStorage.getItem("token");

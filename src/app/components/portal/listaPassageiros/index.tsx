@@ -1,6 +1,6 @@
 "use client";
 //import useSWR from "swr";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 //import Button from "../button/index";
 import { Button } from "primereact/button";
@@ -104,7 +104,7 @@ const Page = () => {
 		}
 	};
 
-	const fetchData = async () => {
+	const fetchData = useCallback(async () => {
 		setLoading(true); // Ativa o loading ao iniciar a busca
 		const token = localStorage.getItem("token");
 		if (token) {
@@ -132,11 +132,11 @@ const Page = () => {
 		} else {
 			window.location.href = "http://localhost:3000/portal";
 		}
-	};
+	}, []);
 
 	useEffect(() => {
 		fetchData();
-	}, []);
+	}, [fetchData]);
 
 	const deletePassageiro = async (controle: number) => {
 		const token = localStorage.getItem("token");

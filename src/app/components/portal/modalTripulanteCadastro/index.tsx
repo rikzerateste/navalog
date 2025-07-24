@@ -86,6 +86,7 @@ const ModalTripulanteCadastro: React.FC<ModalTripulanteCadastroProps> = ({
 				console.error("Erro ao buscar empresas:", error);
 			}
 		};
+
 		if (tripulante) {
 			setNovaTripulante(tripulante);
 			setEditing(true);
@@ -104,7 +105,7 @@ const ModalTripulanteCadastro: React.FC<ModalTripulanteCadastroProps> = ({
 		}
 
 		fetchFuncao();
-	}, []);
+	}, [tripulante]);
 
 	const [tripulanteErros, setTripulanteErros] = useState<{
 		[key: string]: boolean;
