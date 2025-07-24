@@ -32,7 +32,13 @@ export default function Home() {
 		<main>
 			<header className={styles.header}>
 				<div className={styles.logotipo}>
-					<Image src="/images/LogoFer2.png" alt="" width={40} height={40} />
+					<Image
+						src="/images/LogoFer2.png"
+						alt="Logo despachante"
+						width={40}
+						height={40}
+					/>
+
 					<Link href="#welcome" className="scroll-link">
 						Fernanda Pestana Despachante Fluvial
 					</Link>
@@ -90,7 +96,6 @@ export default function Home() {
 					</a>
 				</div>
 
-				<p>Atendemos em todo Brasil!</p>
 				<a href="#contato">
 					<Button label="Fale conosco" severity="secondary" />
 				</a>
@@ -99,10 +104,6 @@ export default function Home() {
 			<section id="servicos" className={styles.servicos}>
 				<div>
 					<div className={styles.titulo}>
-						<div className={styles.subTitulo}>
-							<p>Nossos</p>
-						</div>
-
 						<h1>Serviços</h1>
 					</div>
 

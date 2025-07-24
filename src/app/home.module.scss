@@ -14,9 +14,8 @@
 		font-size: 20px;
 
 		a {
-			color: inherit;
-			text-decoration: none;
-			line-height: 1.2;
+			font-family: "Ancizar Serif", serif;
+			color: #112e40;
 		}
 
 		@include Phone {
@@ -28,7 +27,7 @@
 	}
 
 	@include Padding;
-	padding: 40px 120px;
+	padding: 12px 120px;
 
 	width: 100%;
 
