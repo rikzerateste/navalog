@@ -3,7 +3,8 @@ import { useRouter } from "next/navigation";
 import { ReactElement, useEffect, useState } from "react";
 
 import styles from "./portal-layout.module.scss";
-import SideBar from "@/components/portal/sidebar";
+import SideBar from "@/components/portal/sideBar";
+//import SideBar from "@/components/portal/sidebar";
 
 export default function PortalPageLayout({
 	children,
