@@ -4,20 +4,51 @@
 @import "@/styles/mixins/responsive.scss";
 
 .header {
-	@include Padding;
+	.logotipo {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		font-family: "Ancizar Serif", serif;
+		color: #112e40;
+		font-weight: 600;
+		font-size: 20px;
 
-	padding-top: 40px;
-	padding-bottom: 40px;
+		a {
+			color: inherit;
+			text-decoration: none;
+			line-height: 1.2;
+		}
+
+		@include Phone {
+			gap: 8px;
+			font-size: 16px;
+			flex-shrink: 1;
+			min-width: 0;
+		}
+	}
+
+	@include Padding;
+	padding: 40px 120px;
+
+	width: 100%;
+
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	width: 100%;
 	align-items: center;
 	justify-items: stretch;
-	color: $text-primary;
+
+	background-color: #ffffff;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	border-bottom: 1px solid #e5e5e5;
 
 	@include Phone {
-		padding-top: 1rem;
-		padding-bottom: 1rem;
+		padding: 1rem 16px;
+		grid-template-columns: 1fr auto;
+		justify-content: space-between;
 	}
 
 	.menu {
@@ -26,49 +57,204 @@
 		display: flex;
 		align-items: center;
 		justify-content: flex-end;
+		font-weight: 400;
+		font-size: 16px;
 
-		a + a {
+		a {
+			position: relative;
+			color: #000000;
+			text-decoration: none;
+			padding: 8px 0;
+			margin: 0 20px;
+
+			&::after {
+				content: "";
+				position: absolute;
+				left: 0;
+				bottom: 4px;
+				width: 0;
+				height: 2px;
+				background-color: #000000;
+				transition: width 0.3s ease;
+			}
+
+			&:hover::after {
+				width: 100%;
+			}
+		}
+
+		button {
+			background-color: #112e40;
+			color: #fff;
+			border: none;
+			padding: 8px 14px;
+			border-radius: 6px;
+			cursor: pointer;
+			font-size: 14px;
+			transition: background-color 0.3s ease;
+			font-weight: 500;
+			font-family: "Geist", sans-serif;
 			margin-left: 40px;
+
+			display: flex;
+			align-items: center;
+			gap: 4px;
+		}
+
+		button:hover {
+			background-color: #36373a;
 		}
 
 		@include Phone {
 			display: none;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: center;
+
+			position: fixed;
+			top: 0;
+			right: -100%;
+			width: 70%;
+			max-width: 300px;
+			height: 100vh;
+			background-color: #ffffff;
+			box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+			transition: right 0.3s ease-in-out;
+			padding-top: 80px;
+			z-index: 999;
+
+			&.menuOpen {
+				right: 0;
+				display: flex;
+			}
+
+			a,
+			button {
+				width: 90%;
+				text-align: center;
+				padding: 15px 0;
+				margin: 10px 0;
+				border-bottom: 1px solid #eee;
+
+				&:last-child {
+					border-bottom: none;
+				}
+			}
+
+			button {
+				margin-left: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 4px;
+			}
+
+			a::after {
+				display: none;
+			}
+		}
+	}
+
+	.hamburgerMenu {
+		display: none;
+		cursor: pointer;
+		z-index: 1001;
+
+		.bar {
+			width: 25px;
+			height: 3px;
+			background-color: #333;
+			margin: 5px 0;
+			transition: 0.4s;
+		}
+
+		@include Phone {
+			display: block;
+			order: 2;
+		}
+
+		&.open {
+			.bar:nth-child(1) {
+				transform: translateY(8px) rotate(-45deg);
+			}
+			.bar:nth-child(2) {
+				opacity: 0;
+			}
+			.bar:nth-child(3) {
+				transform: translateY(-8px) rotate(45deg);
+			}
 		}
 	}
 }
 
 .servicos {
-	background-image: linear-gradient(to left, #243b55, #141e30);
-	color: white;
+	background-image: linear-gradient(to bottom, #e2eefd, #ffffff);
+	color: #202124;
 	font-weight: 300;
 
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 	align-items: center;
-	padding: 50px 250px 250px 250px;
+	padding: 64px 120px;
 
 	@include Phone {
+		grid-template-columns: 1fr;
 		height: 100vh;
 		justify-content: normal;
-		padding: 40px 16px;
+		padding: 1rem;
 	}
 
 	.titulo {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		align-items: center;
-		margin-bottom: 64px;
+
+		margin-bottom: 32px;
 
 		h1 {
 			@include SizeFontEXLarge;
 			margin: 0;
 			font-weight: 400;
+			font-family: "Geist", sans-serif;
 		}
 
 		p {
 			margin: 0;
+		}
+
+		.conteudo {
+			font-family: "Geist", sans-serif;
+			margin-bottom: 50px;
+
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+
+			@include Phone {
+				align-items: center;
+				flex-direction: column;
+			}
+
+			ul,
+			li {
+				margin-left: -16px;
+				margin-bottom: 8px;
+			}
+		}
+	}
+
+	.imageService {
+		@include Phone {
+			display: none;
+		}
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
 		}
 	}
 
@@ -84,49 +270,86 @@
 
 .welcome {
 	@include Padding;
+
 	height: 100vh;
-	width: 100%;
-	overflow-x: hidden;
-	padding-top: 100px;
+	background-image: linear-gradient(to bottom, white, #e2eefd);
+
+	gap: 1rem;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
 
 	@include Phone {
-		grid-template-columns: 1fr;
-		grid-template-rows: max-content;
-		min-height: 100vh;
-		height: fit-content;
+		margin-top: 3rem;
 	}
 
-	.content {
-		display: grid;
+	h1 {
+		@include SizeFontLarge;
+		font-size: 4rem;
+		font-weight: bold;
+		max-width: 700px;
+		text-align: center;
+		line-height: 1.1;
+		font-family: "Geist", sans-serif;
+		color: #202020;
+		margin: 0;
+	}
+
+	p {
+		@include SizeFontMedium;
+		font-size: 18px;
+		font-weight: 400;
+		color: #666666;
+		max-width: 700px;
+		text-align: center;
+		font-family: "Geist", sans-serif;
+		margin: 0;
+	}
+
+	.buttoncontainer {
+		gap: 1rem;
+		display: flex;
+		flex-direction: row;
+	}
+
+	.btn1 {
+		background-color: #2679f3;
+		color: #fff;
+		border: none;
+		padding: 10px 16px;
+		border-radius: 8px;
+		cursor: pointer;
+		font-size: 16px;
+		transition: background-color 0.3s ease;
+		font-weight: 500;
+		font-family: "Geist", sans-serif;
+	}
+
+	.btn1:hover {
+		background-color: #2262c7;
+	}
+
+	.btn2 {
+		background-color: #d3e1ee;
+		color: #202020;
+		border: none;
+		padding: 10px 16px;
+		border-radius: 8px;
+		cursor: pointer;
+		font-size: 16px;
+		transition: background-color 0.3s ease;
+		font-weight: 500;
+		font-family: "Geist", sans-serif;
+		display: flex;
 		align-items: center;
-		grid-template-columns: repeat(2, 1fr);
-		gap: 16px;
+		gap: 4px;
 
-		@include Phone {
-			grid-template-columns: 1fr;
-			grid-template-rows: max-content;
-			min-height: 100vh;
-			height: fit-content;
+		&:hover {
+			background-color: #b4c7d8;
 		}
 	}
 
-	.textInfo {
-		h1 {
-			@include SizeFontLarge;
-			font-weight: bold;
-		}
-
-		p {
-			@include SizeFontMedium;
-			// font-size: 20px;
-			font-weight: 600;
-			opacity: 0.8;
-		}
-
-		button {
-			margin-top: 20px;
-		}
-	}
 
 	.imageInfo {
 		text-align: end;
@@ -169,122 +392,67 @@
 	}
 
 	.dados {
-		margin-top: 48px;
-		display: flex;
-		flex-wrap: wrap;
-		gap: 32px;
-
-		@include Phone {
-			margin-bottom: 32px;
-		}
-	}
-
-	.locationSpan {
+		gap: 1rem;
 		display: flex;
 		align-items: center;
+		margin-top: 1rem;
 	}
 }
 
 .contato {
-	background-image: linear-gradient(to left, #243b55, #141e30);
-	color: white;
+	background-image: linear-gradient(to bottom, white, #e2eefd);
 	font-weight: 300;
-
+	font-family: "Geist", sans-serif;
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	padding: 180px 250px 180px 250px;
+	grid-template-columns: 1fr 1fr;
 	gap: 32px;
+	padding: 64px 120px;
+	width: 100%;
 
 	@include Phone {
-		grid-template-columns: 1fr;
-		min-height: 100vh;
-		justify-content: normal;
+		display: flex;
+		flex-direction: column;
 		padding: 40px 16px;
+		gap: 32px;
 	}
 
-	.titulo {
+	.conteudo {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
-		align-items: left;
-		margin-bottom: 64px;
+		gap: 32px;
 
-		@include Phone {
-			align-items: center;
-			gap: 16px;
-		}
-
-		h1 {
-			@include SizeFontEXLarge;
-			margin: 0;
-			font-weight: 400;
-
-			@include Phone {
-				text-align: center;
-			}
-		}
-		p {
-			@include SizeFontSmall;
-			margin: 0;
-			color: rgba(255, 255, 255, 0.7);
-		}
-	}
-
-	.inputWrapper {
-		display: flex;
-		align-items: center;
-		padding: 8px;
-		border-bottom: 1px solid #a0abb6;
-		gap: 8px;
-	}
-
-	.forms {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		gap: 48px;
-
-		form {
-			color: #a0abb6;
+		.titulo {
 			display: flex;
 			flex-direction: column;
-			gap: 16px;
-		}
+			justify-content: center;
 
-		input {
-			@include SizeFontNormal;
-			color: #fff;
-			background: none;
-			border: none;
-			font-family: "lexend", sans-serif;
-			//font-size: 1rem;
-			font-weight: 500;
-			width: 100%;
-			height: 100%;
-		}
-		.input:focus {
-			background-color: red;
-			color: red;
-		}
-		input::placeholder,
-		textarea::placeholder {
-			font-family: "lexend", sans-serif;
-			color: #a0abb6;
-		}
-		input:focus-visible {
-			outline: none;
-		}
-	}
+			h1 {
+				@include SizeFontEXLarge;
+				margin: 0;
+				font-weight: 400;
+				text-align: left;
+				font-family: "Geist", sans-serif;
+				font-size: 48px;
+				color: #202124;
+				margin-bottom: 32px;
 
-	.legendaForms {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
+				@include Phone {
+					text-align: center;
+				}
+			}
 
-		p {
-			margin: 0;
-			color: #ffffffb3;
+			p {
+				@include SizeFontSmall;
+				margin: 0;
+				color: #202124;
+				font-family: "Geist", sans-serif;
+				font-size: 16px;
+			}
+
+			@include Phone {
+				align-items: center;
+				text-align: center;
+			}
 		}
 	}
 
@@ -294,10 +462,16 @@
 		align-items: center;
 
 		.iframe {
-			border-radius: 32px;
 			border: none;
-			height: 100%;
+			border-radius: 12px;
 			width: 100%;
+			height: 300px;
+			max-width: 500px;
+
+			@include Phone {
+				width: 100%;
+				height: 250px;
+			}
 		}
 	}
 }
@@ -307,16 +481,16 @@
 	padding-top: 40px;
 	padding-bottom: 40px;
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
 	width: 100%;
 	align-items: center;
 	justify-items: center;
 	color: #fff;
-	background-image: linear-gradient(to left, #243b55, #141e30);
+	background-color: #112e40;
 
 	p {
 		font-weight: 300;
 		color: #cfd3d7;
+		text-align: center;
 	}
 
 	@include Phone {
@@ -331,6 +505,7 @@
 		font-weight: 300;
 		display: flex;
 		align-items: center;
+
 		a + a {
 			margin-left: 40px;
 			@include Phone {
@@ -352,7 +527,7 @@
 			flex-direction: column;
 			width: 100%;
 			gap: 8px;
-			align-items: start;
+			align-items: center;
 		}
 	}
 }

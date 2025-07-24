@@ -2,10 +2,6 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import HomeIcon from "/public/images/home-icon.svg";
-import Logo from "/public/images/logowsdespachos.svg";
-import Star from "/public/images/stars.svg";
-import BannerWelcome from "/public/images/barcohome.svg";
 import personIcon from "/public/images/person-icon.svg";
 import peopleIcon from "/public/images/people-icon.svg";
 import boatIcon from "/public/images/boat-icon.svg";
@@ -14,12 +10,6 @@ import { useEffect, useState } from "react";
 import styles from "./home.module.scss";
 import { Button } from "primereact/button";
 import Numero from "@/components/landingpage/numero";
-
-import axios from "axios";
-import { useFormik } from "formik";
-
-import { SuccessModal } from "./components/landingpage/successModal";
-import { FailModal } from "./components/landingpage/failModal";
 
 export default function Home() {
 	const [boatCount, setBoatCount] = useState(0);
@@ -32,244 +22,151 @@ export default function Home() {
 		setCrewCount(1604);
 	}, []);
 
-	const [isLoading, setLoading] = useState(false);
-	const [successModal, setModalSuccess] = useState(false);
-	const [failModal, setModalFail] = useState(false);
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-	const formik = useFormik({
-		initialValues: {
-			name: "",
-			email: "",
-			message: "",
-		},
-		// validationSchema: Yup.object({
-		// 	name: Yup.string().required("Campo obrigatório"),
-		// 	email: Yup.string()
-		// 		.email("E-mail inválido")
-		// 		.required("Campo obrigatório"),
-		// 	message: Yup.string().required("Campo obrigatório"),
-		// }),
-		onSubmit: (values) => handleSubmitForm(values),
-	});
-
-	const handleSubmitForm = (values: {
-		name: string;
-		email: string;
-		message: string;
-	}) => {
-		setLoading(true);
-		axios
-			.post("/api/sendEmail", {
-				messageBody: `Nome: ${values.name}\nEmail: ${values.email}\n\nMensagem: ${values.message}`,
-				nameBody: values.name,
-			})
-			.then(() => {
-				formik.resetForm();
-				setModalSuccess(true);
-				setLoading(false);
-			})
-			.catch(() => {
-				setLoading(false);
-				setModalSuccess(true);
-			});
-	};
-
-	const closeModal = () => {
-		setModalSuccess(false);
-		setModalFail(false);
+	const toggleMenu = () => {
+		setIsMenuOpen(!isMenuOpen);
 	};
 
 	return (
 		<main>
 			<header className={styles.header}>
 				<div className={styles.logotipo}>
-					<Image src={Logo} alt="WS Despacho Logo" />
+					<Image src="/images/LogoFer2.png" alt="" width={40} height={40} />
+					<Link href="#welcome" className="scroll-link">
+						Fernanda Pestana Despachante Fluvial
+					</Link>
 				</div>
 
-				<nav className={styles.menu}>
-					<Link href="#home" className="scroll-link">
-						<Image src={HomeIcon} alt="Icone de casa" />
-					</Link>
+				<div
+					className={`${styles.hamburgerMenu} ${isMenuOpen ? styles.open : ""}`}
+					onClick={toggleMenu}
+				>
+					<div className={styles.bar}></div>
+					<div className={styles.bar}></div>
+					<div className={styles.bar}></div>
+				</div>
 
-					<Link href="#servicos" className="scroll-link">
+				<div className={`${styles.menu} ${isMenuOpen ? styles.menuOpen : ""}`}>
+					<Link href="#servicos" className="scroll-link" onClick={toggleMenu}>
 						Serviços
 					</Link>
-
-					<Link href="#missao" className="scroll-link">
-						Sobre nós
+					<Link href="#contato" className="scroll-link" onClick={toggleMenu}>
+						Localização
 					</Link>
-
-					<Link href="#contato" className="scroll-link">
-						Contato
-					</Link>
-
-					<Link href="#duvidas" className="scroll-link">
-						Dúvidas
-					</Link>
-				</nav>
+				</div>
 			</header>
 
 			<div className={styles.welcome}>
-				<div className={styles.content}>
-					<div className={styles.textInfo}>
-						<h1>
-							Navegue pelos mares da burocracia com tranquilidade e eficiência.
-						</h1>
+				<h1>Soluções completas para navegação</h1>
 
-						<p>
-							Estamos há mais de 30 anos no mercado descomplicando a navegação
-							fluvial administrativa.
-						</p>
+				<p>
+					Cuidamos da burocracia para que você se concentre no que realmente
+					importa: navegar com tranquilidade. Oferecemos serviços especializados
+					em regularização de embarcações, documentação fluvial e assessoria
+					completa.
+				</p>
 
-						<p className={styles.locationSpan}>
-							<span className="material-symbols-rounded">location_on</span>{" "}
-							Atendemos em todo Brasil!
-						</p>
-						<a href="#contato">
-							<Button label="Fale conosco" severity="secondary" />
-						</a>
-
-						<div className={styles.dados}>
-							<div className={styles.legendaDados}>
-								<div className={styles.legendaTitle}>
-									<h1>
-										<Numero n={boatCount} />
-									</h1>
-									<Image src={boatIcon} alt="" />
-								</div>
-								<p>Embarcações</p>
-							</div>
-
-							<div className={styles.legendaDados}>
-								<div className={styles.legendaTitle}>
-									<h1>
-										<Numero n={clientCount} />
-									</h1>
-									<Image src={personIcon} alt="" />
-								</div>
-								<p>Clientes</p>
-							</div>
-
-							<div className={styles.legendaDados}>
-								<div className={styles.legendaTitle}>
-									<h1>
-										<Numero n={crewCount} />
-									</h1>
-									<Image src={peopleIcon} alt="" />
-								</div>
-								<p>Tripulantes</p>
-							</div>
-						</div>
-					</div>
-
-					<div className={styles.imageInfo}>
-						<Image src={BannerWelcome} alt="Imagem de Barco"></Image>
-					</div>
+				<div className={styles.buttoncontainer}>
+					<a href="#servicos">
+						<button className={styles.btn1}>Saiba Mais</button>
+					</a>
+					<a
+						href="https://wa.me/+5514998487774"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<button className={styles.btn2}>
+							Entre em contato
+							{
+								<Image
+									src="/images/arrow.png"
+									alt={""}
+									width={16}
+									height={16}
+								></Image>
+							}
+						</button>
+					</a>
 				</div>
+
+				<p>Atendemos em todo Brasil!</p>
+				<a href="#contato">
+					<Button label="Fale conosco" severity="secondary" />
+				</a>
 			</div>
 
 			<section id="servicos" className={styles.servicos}>
-				<div className={styles.titulo}>
-					<div className={styles.subTitulo}>
-						<Image src={Star} alt="Icone estrela" />
-						<p>Nossos</p>
+				<div>
+					<div className={styles.titulo}>
+						<div className={styles.subTitulo}>
+							<p>Nossos</p>
+						</div>
+
+						<h1>Serviços</h1>
 					</div>
 
-					<h1>Serviços</h1>
+					<div className={styles.conteudo}>
+						<ul>
+							<li>Alteração de listas de tripulantes</li>
+							<li>Auto de infração, deslacramento e laudo pericial</li>
+							<li>Certificado de Registro de Armador</li>
+							<li>Embarque e desembarque de tripulante</li>
+							<li>Emissão e Renovação do Seguro obrigatório</li>
+							<li>Inscrição e renovação de documentos de embarcação</li>
+							<li>Inscrição de cursos junto a Marinha</li>
+							<li>
+								Outorga da Anatel (emissão e renovação licença de estação de
+								navio junto a Anatel)
+							</li>
+							<li>Outorga da Antaq</li>
+							<li>Pedido de passe de saída junto a Marinha do Brasil</li>
+							<li>Registro Especial Brasileiro (REB)</li>
+							<li>Renovação de arrais armador</li>
+							<li>Renovação e atualização de CIR</li>
+						</ul>
+					</div>
 				</div>
 
-				<div>
-					<ul>
-						<li>Abertura de rol portuário</li>
-						<li>Agendamento de vistorias junto a capitania dos portos</li>
-						<li>Controle de vistorias</li>
-						<li>
-							Emissão e renovação de título de inscrição da embarcação e
-							atualização de provisões de registro junto ao tribunal marítimo e
-							capitanias
-						</li>
-						<li>Outorga da Antaq</li>
-						<li>Renovação de CIR</li>
-						<li>Acompanhamento de vistorias</li>
-						<li>Ascensão de categoria</li>
-						<li>Emissão e renovação de CRA</li>
-						<li>
-							Licença Estação de Navio: Emissão e renovação junto a Anatel
-						</li>
-						<li>Pedido de despachos</li>
-						<li>Segunda via da CIR</li>
-						<li>Solicitação do Registro Especial Brasileiro</li>
-					</ul>
+				<div className={styles.imageService}>
+					<Image
+						src="/images/fig_service.png"
+						alt="Descrição da imagem para acessibilidade"
+						width={300}
+						height={300}
+					/>
 				</div>
 			</section>
 
 			<section id="contato">
-				{successModal && <SuccessModal closeModal={closeModal} />}
-				{failModal && <FailModal closeModal={closeModal} />}
-				{/* {isLoading && <Loading/>} */}
 				<div className={styles.contato}>
 					<div className={styles.conteudo}>
 						<div className={styles.titulo}>
-							<h1>Entre em contato</h1>
+							<h1>Contate-nos</h1>
 							<p>
-								Atendemos de segunda a sexta das 07:30 às 12:00 - 13:30 às
-								17:00. Obrigado por considerar a W.S. Comércio e Despachos
-								Fluviais como seu parceiro confiável.
+								Atendemos de segunda a sexta das{" "}
+								<b>07:30 às 12:00 - 13:30 às 17:00.</b>
+								<br></br> Rua Juvenal Pompeu, 179. Vila São José, Barra
+								Bonita-SP
+							</p>
+						</div>
+						<div className={styles.titulo}>
+							<p>
+								<b>ferpestanadespachantefluvial@gmail.com</b>
+							</p>
+							<p>
+								<b>(14) 99848-7775</b>
 							</p>
 						</div>
 
-						<div className={styles.forms}>
-							<form id="formulario" onSubmit={formik.handleSubmit}>
-								<div className={styles.inputWrapper}>
-									<span className="material-symbols-rounded">
-										account_circle
-									</span>
-									<input
-										id="name"
-										name="name"
-										type="text"
-										placeholder="Nome completo"
-										onBlur={formik.handleBlur}
-										onChange={formik.handleChange}
-										value={formik.values.name}
-										required
-									/>
-								</div>
-
-								<div className={styles.inputWrapper}>
-									<span className="material-symbols-rounded">
-										alternate_email
-									</span>
-									<input
-										id="email"
-										name="email"
-										type="email"
-										placeholder="E-mail"
-										onBlur={formik.handleBlur}
-										onChange={formik.handleChange}
-										value={formik.values.email}
-										required
-									/>
-								</div>
-
-								<div className={styles.inputWrapper}>
-									<span className="material-symbols-rounded">sms</span>
-									<input
-										id="message"
-										name="message"
-										type="text"
-										placeholder="Mensagem"
-										onBlur={formik.handleBlur}
-										onChange={formik.handleChange}
-										value={formik.values.message}
-										required
-									/>
-								</div>
-							</form>
-							<div className={styles.legendaForms}>
-								<p>wsdespachantefluvial@gmail.com</p>
-								<p>(14) 3641-1680 / (14) 3641-4141</p>
-							</div>
+						<div className={styles.mapa}>
+							<iframe
+								src="https://www.google.com/maps/embed?pb=!3m2!1spt-BR!2sbr!4v1752516639169!5m2!1spt-BR!2sbr!6m8!1m7!1sPzuCIPx8Z5siR7eJtF5dWg!2m2!1d-22.4920317301662!2d-48.55647945021897!3f340.9124889437429!4f-13.29135232859474!5f0.4000000000000002"
+								allowFullScreen
+								loading="lazy"
+								referrerPolicy="no-referrer-when-downgrade"
+								className={styles.iframe}
+							></iframe>
 						</div>
 					</div>
 
@@ -287,23 +184,17 @@ export default function Home() {
 
 			<footer className={styles.footer}>
 				<div className={styles.menu}>
-					<span>MENU</span>
-					<Link href="#home" className="scroll-link">
-						Home
-					</Link>
-					<Link href="#servicos" className="scroll-link">
-						Serviços
-					</Link>
-					<Link href="#missao" className="scroll-link">
-						Sobre nós
-					</Link>
-					<Link href="#contato" className="scroll-link">
-						Contato
-					</Link>
-					{/*<Link href="#duvidas">Duvidas</Link>*/}
+					<Image
+						src="/images/LogoFerRodape.png"
+						alt={""}
+						width={64}
+						height={64}
+					></Image>
 				</div>
-
-				<p>©Allrights reserved W.S. Comércio e Despachos Fluviais</p>
+				<p>
+					Fernanda Pestana Despachante Fluvial<br></br>©Todos os direitos
+					reservados.
+				</p>
 			</footer>
 		</main>
 	);

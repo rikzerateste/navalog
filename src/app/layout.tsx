@@ -12,8 +12,8 @@ const lexend = Lexend({
 });
 
 export const metadata: Metadata = {
-	title: "WS Despachos",
-	description: "WS Comércio Despachos Fluviais",
+	title: "Fernanda Pestana Despachante Fluvial",
+	description: "",
 };
 
 export default function Layout({
