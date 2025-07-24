@@ -2,24 +2,26 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Button from "../button/index";
+//import Button from "../button/index";
+import { Button } from "primereact/button";
 import styles from "./styles.module.scss";
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import { Button as PrimeButton } from "primereact/button";
+//import { Button as PrimeButton } from "primereact/button";
 import ModalTripulanteCadastro from "@/components/portal/modalTripulanteCadastro/index";
 import InputSearch from "../input/index";
 import { Skeleton } from "primereact/skeleton";
 import { ProgressBar } from "primereact/progressbar";
 import { ProgressSpinner } from "primereact/progressspinner";
 import ConfirmDialog from "../confirmDialog/index"; // Importando o modal de confirmação
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+//import { toast, ToastContainer } from "react-toastify";
+//import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
 import TripulanteIcon from "/public/images/tripulantes-page.svg";
+import { useToast } from "@/hooks/useToast";
 
 const Page = () => {
 	const [search, setSearch] = useState("");
@@ -181,10 +183,8 @@ const Page = () => {
 						onChange={handleSearchChange}
 					/>
 					<Button
-						tipoBotao="normal"
-						title="Novo Registro"
+						label="Novo Registro"
 						icon="pi pi-plus-circle"
-						tamanho="11em"
 						onClick={openModal}
 					/>
 				</div>
@@ -289,7 +289,7 @@ const Page = () => {
 				onConfirm={handleDeleteConfirm}
 				message="Tem certeza de que deseja excluir este tripulante?"
 			/>
-			<ToastContainer />
+			{/* <ToastContainer /> */}
 		</>
 	);
 };

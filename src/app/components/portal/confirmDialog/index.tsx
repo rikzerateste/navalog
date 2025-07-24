@@ -1,6 +1,7 @@
 import React from 'react';
 import { Dialog } from 'primereact/dialog';
-import ButtonCustom from "../button"
+//import ButtonCustom from "../button"
+import { Button } from "primereact/button";
 import styles from './styles.module.scss'
 
 interface ConfirmDialogProps {
@@ -15,8 +16,8 @@ const ConfirmDialog: React.FC<ConfirmDialogProps> = ({ visible, onHide, onConfir
     const footerContent = (
         <div className={styles.botao}>
 
-            <ButtonCustom tipoBotao='cancelar' title="Não" tamanho="10em" onClick={onHide} />
-            <ButtonCustom tipoBotao='normal' title="Sim" onClick={onConfirm} tamanho="10em" />
+            <Button  label="Não" onClick={onHide} />
+            <Button  label="Sim" onClick={onConfirm} />
         </div>
     );
 

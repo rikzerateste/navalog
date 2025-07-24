@@ -2,18 +2,20 @@ import React, { useEffect, useState } from "react";
 import { InputText } from "primereact/inputtext";
 import axios from "axios";
 import styles from "./styles.module.scss";
-import PrimeButton from "../button/index";
+//import PrimeButton from "../button/index";
+import { Button } from "primereact/button";
 import Image from "next/image";
 import CtsIcon from "/public/images/ctsIcon.svg";
 import { Dropdown } from "primereact/dropdown";
-import Button from "../button/index";
+//import Button from "../button/index";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Toast } from "primereact/toast";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+//import { ToastContainer, toast } from "react-toastify";
+//import "react-toastify/dist/ReactToastify.css";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { Dialog } from "primereact/dialog";
+import { useToast } from "@/hooks/useToast";
 
 interface Tripulante {
 	Categoria: string;
@@ -103,10 +105,12 @@ const ModalCTSCadastro: React.FC<ModalCTSCadastroProps> = ({
 		}));
 	};
 
+	const {showToast} = useToast();
+
 	const addTripulante = () => {
 		if (!novoTripulante.Tipo_de_Tripulante) {
 			setError("Selecione um tipo de tripulante!"); // Mostra o erro no Dropdown
-			toast.error("Selecione um tipo de tripulante!", { autoClose: 2000 }); //Mostra o erro em Modal em cima
+			showToast("Erro", "Selecione um tipo de tripulante!", "error"); //Mostra o erro em Modal em cima
 			return;
 		}
 		const tripulanteExists = novoCTS.tripulanteCTS.some(
@@ -116,9 +120,7 @@ const ModalCTSCadastro: React.FC<ModalCTSCadastroProps> = ({
 
 		if (tripulanteExists) {
 			setError("Tripulante já existente!");
-			toast.error("Tripulante já existe, verifique a lista!", {
-				autoClose: 2000,
-			});
+			showToast("Erro", "Tripulante já existe, verifique a lista!", "error");
 		} else {
 			setError(null);
 			setNovoCTS((prevCTS) => ({
@@ -250,7 +252,7 @@ const ModalCTSCadastro: React.FC<ModalCTSCadastroProps> = ({
 
 	const handleSubmit = async () => {
 		if (!validateFields()) {
-			return toast.error("Por favor, preencha todos os campos obrigatórios.");
+			return showToast("erro", "Por favor, preencha todos os campos obrigatórios.", "error");
 		} else {
 			setLoading(true);
 
@@ -275,7 +277,7 @@ const ModalCTSCadastro: React.FC<ModalCTSCadastroProps> = ({
 
 				onSuccess();
 			} catch (error) {
-				toast.error("Erro ao salvar o CTS:");
+				showToast("Erro", "Erro ao salvar o CTS:", "error");
 			}
 		}
 	};
@@ -332,7 +334,7 @@ const ModalCTSCadastro: React.FC<ModalCTSCadastroProps> = ({
 				headerClassName={styles.modal}
 				contentClassName={styles.modal}
 			>
-				<ToastContainer />
+				{/* <ToastContainer /> */}
 				<div className={styles.form}>
 					<div className={styles.title}>
 						<Image src={CtsIcon} alt="Logo" />
@@ -413,12 +415,12 @@ const ModalCTSCadastro: React.FC<ModalCTSCadastroProps> = ({
 							</div>
 
 							<Button
-								tipoBotao="cinza"
+								
 								icon=" pi pi-plus-circle"
-								title="Adicionar"
+								label="Adicionar"
 								onClick={addTripulante}
-								tamanho="100%"
-								altura="2em"
+								
+								
 							/>
 						</div>
 
@@ -566,16 +568,15 @@ const ModalCTSCadastro: React.FC<ModalCTSCadastroProps> = ({
 					</div>
 					{/* BOTÕES */}
 					<div className={styles.botoes}>
-						<PrimeButton
-							tipoBotao="cancelar"
-							title="Cancelar"
+						<Button
+							label="Cancelar"
 							onClick={onClose}
-							tamanho="10em"
+
 						/>
-						{loading == true ? (
-							<PrimeButton
-								tipoBotao="normal"
-								title={
+						{/* {loading == true ? (
+							<Button
+								
+								label={
 									<ProgressSpinner
 										style={{ width: "20px", height: "20px" }}
 										strokeWidth="8"
@@ -583,16 +584,22 @@ const ModalCTSCadastro: React.FC<ModalCTSCadastroProps> = ({
 									/>
 								}
 								disabled
-								tamanho="10em"
+								
 							/>
 						) : (
-							<PrimeButton
-								tipoBotao="normal"
-								title={editing ? "Atualizar" : "Salvar"}
+							<Button
+								
+								label={editing ? "Atualizar" : "Salvar"}
 								onClick={handleSubmit}
-								tamanho="10em"
+								
 							/>
-						)}
+						)} */}
+						<Button
+							label={editing ? "Atualizar" : "Salvar"}
+							onClick={onClose}
+							loading={loading}
+
+						/>
 					</div>
 				</div>
 			</Dialog>

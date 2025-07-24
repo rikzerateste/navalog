@@ -1,16 +1,16 @@
 "use client";
-import useSWR from "swr";
+//import useSWR from "swr";
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Button from "../button/index";
+import { Button } from "primereact/button";
 import styles from "./styles.module.scss";
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import { Button as PrimeButton } from "primereact/button";
+//import { Button as PrimeButton } from "primereact/button";
 import ModalCTSCadastro from "../modalCartaoTripulantesCadastro/index";
 import InputSearch from "../input/index";
 import { ProgressBar } from "primereact/progressbar";
@@ -262,10 +262,8 @@ const Page = () => {
 						onChange={handleSearchChange}
 					/>
 					<Button
-						tipoBotao="normal"
-						title="Novo Registro"
+						label="Novo Registro"
 						icon=" pi pi-plus-circle"
-						tamanho="11em"
 						onClick={openModal}
 					/>
 				</div>

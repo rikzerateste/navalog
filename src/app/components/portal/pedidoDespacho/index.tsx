@@ -1,9 +1,9 @@
 "use client";
-import useSWR from "swr";
+//import useSWR from "swr";
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Button from "../button/index";
+//import Button from "../button/index";
 import styles from "./styles.module.scss";
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
@@ -21,8 +21,10 @@ import Link from "next/link";
 import DocIcon from "/public/images/pedido-de-dispacho-icon.svg";
 import { ProgressBar } from "primereact/progressbar";
 import { headers } from "next/headers";
-import { ToastContainer } from "react-toastify";
+//import { ToastContainer } from "react-toastify";
 import ConfirmDialog from "../confirmDialog";
+import { Button } from "primereact/button";
+import { useToast } from "@/hooks/useToast";
 
 interface PedidoDespacho {
 	Id: number;
@@ -359,10 +361,10 @@ const Page = () => {
 						onChange={handleSearch}
 					/>
 					<Button
-						tipoBotao="normal"
-						title="Novo Despacho"
+						
+						label="Novo Despacho"
 						icon=" pi pi-plus-circle"
-						tamanho="11em"
+						
 						onClick={openModal}
 					/>
 				</div>
@@ -457,7 +459,7 @@ const Page = () => {
 				onConfirm={handleDeleteConfirm} // Certifique-se de que isso está correto
 				message="Tem certeza de que deseja excluir?"
 			/>
-			<ToastContainer />
+			{/* <ToastContainer /> */}
 		</>
 	);
 };

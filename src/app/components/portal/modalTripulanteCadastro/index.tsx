@@ -3,14 +3,16 @@ import { InputText } from "primereact/inputtext";
 import { Dropdown } from "primereact/dropdown";
 import axios from "axios";
 import styles from "./styles.module.scss";
-import PrimeButton from "../button/index";
+/* import PrimeButton from "../button/index"; */
 import Image from "next/image";
 import TripulanteIcon from "/public/images/tripulantes-page.svg";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+/* import { ToastContainer, toast } from "react-toastify"; */
+//import "react-toastify/dist/ReactToastify.css";
 import { Dialog } from "primereact/dialog";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { InputMask } from "primereact/inputmask";
+import { useToast } from "@/hooks/useToast";
+import { Button } from "primereact/button";
 
 interface Tripulante {
 	Controle?: number;
@@ -125,9 +127,11 @@ const ModalTripulanteCadastro: React.FC<ModalTripulanteCadastroProps> = ({
 
 	const [loadingSubmit, setLoadingSubmit] = useState(false);
 
+	const {showToast} = useToast();
+
 	const handleSubmit = async () => {
 		if (!validateTripulanteFields()) {
-			return toast.error("Por favor, preencha todos os campos obrigatórios.");
+			return showToast("Error", "Por favor, preencha todos os campos obrigatórios.", "error");
 		} else {
 			setLoadingSubmit(true);
 			const token = localStorage.getItem("token");
@@ -158,7 +162,7 @@ const ModalTripulanteCadastro: React.FC<ModalTripulanteCadastroProps> = ({
 			} catch (error) {
 				setLoadingSubmit(false);
 
-				toast.error("Erro ao cadastrar tripulante!");
+				showToast("Erro", "Erro ao cadastrar tripulante!", "error");
 			}
 		}
 	};
@@ -319,13 +323,13 @@ const ModalTripulanteCadastro: React.FC<ModalTripulanteCadastroProps> = ({
 						</div>
 					</div>
 					<div className={styles.botoes}>
-						<PrimeButton
-							tipoBotao="cancelar"
-							title="Cancelar"
+						<Button
+							
+							label="Cancelar"
 							onClick={onClose}
-							tamanho="10em"
+							
 						/>
-						{loadingSubmit == true ? (
+						{/* {loadingSubmit == true ? (
 							<PrimeButton
 								tipoBotao="normal"
 								title={
@@ -345,11 +349,17 @@ const ModalTripulanteCadastro: React.FC<ModalTripulanteCadastroProps> = ({
 								onClick={handleSubmit}
 								tamanho="10em"
 							/>
-						)}
+						)} */}
+						<Button
+							
+							label={editing ? "Atualizar" : "Salvar"}
+							onClick={onClose}
+							loading={loadingSubmit}	
+						/>
 					</div>
 				</div>
 			</Dialog>
-			<ToastContainer />
+			{/* <ToastContainer /> */}
 		</>
 	);
 };

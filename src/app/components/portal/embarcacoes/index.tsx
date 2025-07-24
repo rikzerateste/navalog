@@ -1,7 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Button from "../button/index";
+//import Button from "../button/index";
+import { Button } from "primereact/button";
 import styles from "./styles.module.scss";
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
@@ -13,8 +14,8 @@ import ModalEmbarcacaoCadastro from "@/components/portal/modalEmbarcacaoCadastro
 import InputSearch from "../input/index";
 import { Skeleton } from "primereact/skeleton";
 import { ProgressBar } from "primereact/progressbar";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+//import { toast, ToastContainer } from "react-toastify";
+//import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
 import Ancora from "/public/images/ancora.svg";
 import ConfirmDialog from "../confirmDialog/index"; // Importando o modal de confirmação
@@ -234,10 +235,10 @@ const Page = () => {
 						onChange={handleSearch}
 					/>
 					<Button
-						tipoBotao="normal"
-						title="Novo"
+						
+						label="Novo"
 						icon="pi pi-plus-circle"
-						tamanho="11em"
+						
 						onClick={openModal}
 					/>
 				</div>
@@ -307,7 +308,7 @@ const Page = () => {
 				onConfirm={handleDeleteConfirm}
 				message="Tem certeza de que deseja excluir esta embarcação?"
 			/>
-			<ToastContainer position="top-right" />
+			{/* <ToastContainer position="top-right" /> */}
 		</>
 	);
 };

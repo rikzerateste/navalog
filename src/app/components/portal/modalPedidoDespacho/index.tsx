@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Dropdown } from "primereact/dropdown";
 import { InputText } from "primereact/inputtext";
 import { InputNumber } from "primereact/inputnumber";
-import PrimeButton from "../button/index";
-import ButtonCustom from "../button";
-
+/* import PrimeButton from "../button/index";
+import ButtonCustom from "../button"; */
+import { Button } from "primereact/button";
 import axios from "axios";
 import styles from "./styles.module.scss";
 import Image from "next/image";
@@ -15,11 +15,12 @@ import { Checkbox } from "primereact/checkbox";
 import { CheckboxChangeEvent } from "primereact/checkbox";
 import { Nova_Cut, Turret_Road } from "next/font/google";
 import { ProgressSpinner } from "primereact/progressspinner";
-
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { useToast } from "@/hooks/useToast";
+//import { ToastContainer, toast } from "react-toastify";
+//import "react-toastify/dist/ReactToastify.css";
 import { Dialog } from "primereact/dialog";
 import { InputMask } from "primereact/inputmask";
+import { Loading } from "@/components/landingpage/loading";
 
 interface Embarcacao {
 	Inscricao: string;
@@ -220,9 +221,11 @@ const ModalDespachoCadastro: React.FC<ModalDespachoCadastroProps> = ({
 
 	const [loadingSubmit, setLoadingSubmit] = useState(false);
 
+	const {showToast} = useToast();
+
 	const handleSubmit = async () => {
 		if (!validateDespachoFields()) {
-			return toast.error("Por favor, preencha todos os campos obrigatórios.");
+			return showToast("Erro", "Por favor, preencha todos os campos obrigatórios.","error");
 		} else {
 			setLoadingSubmit(true);
 			const token = localStorage.getItem("token");
@@ -252,7 +255,7 @@ const ModalDespachoCadastro: React.FC<ModalDespachoCadastroProps> = ({
 			} catch (error) {
 				setLoadingSubmit(true);
 
-				toast.error("Erro ao cadastrar a pedido de despacho!");
+				showToast("Erro", "Erro ao cadastrar a pedido de despacho!","error");
 			}
 		}
 	};
@@ -714,13 +717,13 @@ const ModalDespachoCadastro: React.FC<ModalDespachoCadastroProps> = ({
 						</div>
 					</div>
 					<div className={styles.botoes}>
-						<PrimeButton
-							tipoBotao="cancelar"
-							title="Cancelar"
+						<Button
+							
+							label="Cancelar"
 							onClick={onClose}
-							tamanho="10em"
+							
 						/>
-						{loadingSubmit == true ? (
+						{/* {loadingSubmit == true ? (
 							<PrimeButton
 								tipoBotao="normal"
 								title={
@@ -741,12 +744,18 @@ const ModalDespachoCadastro: React.FC<ModalDespachoCadastroProps> = ({
 								onClick={handleSubmit}
 								tamanho="10em"
 							/>
-						)}
+						)} */}
+						<Button
+							
+							label={despacho ? "Atualizar" : "Salvar"}
+							onClick={onClose}
+							loading={loadingSubmit}
+						/>
 					</div>
 				</div>
 			</Dialog>
 
-			<ToastContainer position="top-right" />
+			{/* <ToastContainer position="top-right" /> */}
 		</>
 	);
 };

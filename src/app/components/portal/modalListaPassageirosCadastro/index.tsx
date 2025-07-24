@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { InputText } from "primereact/inputtext";
 import axios from "axios";
 import styles from "./styles.module.scss";
-import PrimeButton from "../button/index";
-import Button from "../button/index";
+/* import PrimeButton from "../button/index";
+import Button from "../button/index"; */
 import Image from "next/image";
 import ListaPassageirosIcon from "/public/images/ListaDePassageiros-Icon.svg";
 import { Dropdown, DropdownChangeEvent } from "primereact/dropdown";
@@ -12,12 +12,14 @@ import { IconField } from "primereact/iconfield";
 import { InputIcon } from "primereact/inputicon";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+/* import { ToastContainer, toast } from "react-toastify"; */
+//import "react-toastify/dist/ReactToastify.css";
 import { componentsToColor } from "pdf-lib";
 import { Dialog } from "primereact/dialog";
-import ButtonCustom from "../button";
+/* import ButtonCustom from "../button"; */
 import { headers } from "next/headers";
+import { useToast } from "@/hooks/useToast";
+import { Button } from "primereact/button";
 
 interface LPE {
 	Controle?: number;
@@ -314,6 +316,8 @@ const ModalCadastroEdicao: React.FC<ModalCadastroEdicaoProps> = ({
 	const [lpeComboiosLocal, setLpeComboiosLocal] = useState<LPEComboio[]>([]);
 	const [lpedsLocal, setLpedsLocal] = useState<LPED[]>([]);
 
+	const {showToast} = useToast();
+
 	const handleAddLpeComboio = () => {
 		if (embarcacaoSelecionada) {
 			const novoComboio = {
@@ -342,7 +346,7 @@ const ModalCadastroEdicao: React.FC<ModalCadastroEdicaoProps> = ({
 					return updatedList;
 				});
 			} else {
-				toast.error("Comboio já existente!");
+				showToast("Erro", "Comboio já existente!","error");
 			}
 		}
 	};
@@ -363,7 +367,7 @@ const ModalCadastroEdicao: React.FC<ModalCadastroEdicaoProps> = ({
 			} else {
 				setError("Tripulante já existente!");
 
-				toast.error("Tripulante já existente!");
+				showToast("Erro","Tripulante já existente!","error");
 			}
 		}
 	};
@@ -481,7 +485,7 @@ const ModalCadastroEdicao: React.FC<ModalCadastroEdicaoProps> = ({
 
 	const handleSubmit = async () => {
 		if (!validateFields()) {
-			return toast.error("Por favor, preencha todos os campos obrigatórios.");
+			return showToast("Erro","Por favor, preencha todos os campos obrigatórios.","error");
 		}
 
 		const token = localStorage.getItem("token");
@@ -494,7 +498,7 @@ const ModalCadastroEdicao: React.FC<ModalCadastroEdicaoProps> = ({
 				);
 
 				if (!embarcacaoUpdate) {
-					toast.error("Embarcação não encontrada");
+					showToast("Erro", "Embarcação não encontrada", "error");
 					return;
 				}
 
@@ -594,12 +598,12 @@ const ModalCadastroEdicao: React.FC<ModalCadastroEdicaoProps> = ({
 				}
 
 				setLoadingSubmit(false);
-				toast.success("Atualizado com sucesso!");
+				showToast("Sucesso","Atualizado com sucesso!","success");
 				onClose();
 				window.location.reload();
 			}
 		} catch (error) {
-			toast.error("Erro ao atualizar os dados:");
+			showToast("Erro","Erro ao atualizar os dados:", "error");
 		}
 	};
 
@@ -822,12 +826,11 @@ const ModalCadastroEdicao: React.FC<ModalCadastroEdicaoProps> = ({
 								{error && <div className={styles.errorMessage}>{error}</div>}
 							</div>
 							<Button
-								tipoBotao="cinza"
+								
 								icon=" pi pi-plus-circle"
-								title="Adicionar"
+								label="Adicionar"
 								onClick={handleAddLped}
-								tamanho="100%"
-								altura="2em"
+								
 							/>
 						</div>
 
@@ -987,12 +990,11 @@ const ModalCadastroEdicao: React.FC<ModalCadastroEdicaoProps> = ({
             </div> */}
 							<div className={styles.opcao}>
 								<Button
-									tipoBotao="cinza"
+									
 									icon=" pi pi-plus-circle"
-									title="Adicionar Comboio"
+									label="Adicionar Comboio"
 									onClick={handleAddLpeComboio}
-									tamanho="100%"
-									altura="2em"
+									
 								/>
 							</div>
 						</div>
@@ -1069,13 +1071,13 @@ const ModalCadastroEdicao: React.FC<ModalCadastroEdicaoProps> = ({
 					</div>
 
 					<div className={styles.botoes}>
-						<PrimeButton
-							tipoBotao="cancelar"
-							title="Cancelar"
+						<Button
+							
+							label="Cancelar"
 							onClick={onClose}
-							tamanho="10em"
+							
 						/>
-						{loadingSubmit == true ? (
+						{/* {loadingSubmit == true ? (
 							<PrimeButton
 								tipoBotao="normal"
 								title={
@@ -1094,7 +1096,13 @@ const ModalCadastroEdicao: React.FC<ModalCadastroEdicaoProps> = ({
 								onClick={handleSubmit}
 								tamanho="10em"
 							/>
-						)}
+						)} */}
+						<Button
+							
+							label={embarcacao ? "Salvar" : "Atualizar"}
+							onClick={onClose}
+							loading={loading}
+						/>
 					</div>
 				</div>
 			</Dialog>

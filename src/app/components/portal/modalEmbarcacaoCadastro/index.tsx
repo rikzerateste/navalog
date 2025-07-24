@@ -8,9 +8,10 @@ import styles from "./styles.module.scss";
 import axios from "axios";
 import Image from "next/image";
 import Ancora from "/public/images/ancora.svg";
-import PrimeButton from "../button/index";
-import { ToastContainer, toast } from "react-toastify";
+//import PrimeButton from "../button/index";
+//import { ToastContainer, toast } from "react-toastify";
 import { ProgressSpinner } from "primereact/progressspinner";
+import { useToast } from "@/hooks/useToast";
 
 interface Empresa {
 	Codigo: number;
@@ -244,9 +245,11 @@ const ModalEmbascacoesCadastro: React.FC<ModalEmbascacoesCadastroProps> = ({
 	};
 	const [loadingSubmit, setLoadingSubmit] = useState(false);
 
+	const {showToast} = useToast();
+
 	const handleSubmit = async () => {
 		if (!validateFields()) {
-			return toast.error("Por favor, preencha todos os campos obrigatórios.");
+			return showToast("Errro","Por favor, preencha todos os campos obrigatórios.","error");
 		}
 
 		setLoadingSubmit(true);
@@ -275,7 +278,7 @@ const ModalEmbascacoesCadastro: React.FC<ModalEmbascacoesCadastroProps> = ({
 		} catch (error) {
 			setLoadingSubmit(false);
 
-			toast.error("Erro ao cadastrar a embarcação, preencha os campos!");
+			showToast("Erro", "Erro ao cadastrar a embarcação, preencha os campos!", "error");
 		}
 	};
 	const criarEmbarcacao = async () => {
@@ -609,13 +612,11 @@ const ModalEmbascacoesCadastro: React.FC<ModalEmbascacoesCadastroProps> = ({
 					</div>
 
 					<div className={styles.botoes}>
-						<PrimeButton
-							tipoBotao="cancelar"
+						<Button
 							title="Cancelar"
 							onClick={onClose}
-							tamanho="10em"
 						/>
-						{loadingSubmit == true ? (
+						{/* {loadingSubmit == true ? (
 							<PrimeButton
 								tipoBotao="normal"
 								title={
@@ -635,11 +636,16 @@ const ModalEmbascacoesCadastro: React.FC<ModalEmbascacoesCadastroProps> = ({
 								onClick={handleSubmit}
 								tamanho="10em"
 							/>
-						)}
+						)} */}
+						<Button
+							label={editing ? "Atualizar" : "Salvar"}
+							onClick={onClose}
+							loading={loading}
+						/>
 					</div>
 				</div>
 			</Dialog>
-			<ToastContainer />
+			{/* <ToastContainer /> */}
 		</>
 	);
 };

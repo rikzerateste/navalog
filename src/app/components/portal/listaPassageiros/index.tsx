@@ -1,8 +1,9 @@
 "use client";
-import useSWR from "swr";
+//import useSWR from "swr";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Button from "../button/index";
+//import Button from "../button/index";
+import { Button } from "primereact/button";
 import styles from "./styles.module.scss";
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
@@ -16,7 +17,7 @@ import Image from "next/image";
 import { ProgressBar } from "primereact/progressbar";
 
 import ListaPassageirosIcon from "/public/images/ListaDePassageiros-Icon.svg";
-import { ToastContainer } from "react-toastify";
+//import { ToastContainer } from "react-toastify";
 
 interface LPE {
 	Controle?: number;
@@ -299,10 +300,10 @@ const Page = () => {
 						onChange={handleSearch}
 					/>
 					<Button
-						tipoBotao="normal"
-						title="Nova Lista"
+						
+						label="Nova Lista"
 						icon=" pi pi-plus-circle"
-						tamanho="11em"
+					
 						onClick={openModal}
 					/>
 				</div>
@@ -364,7 +365,7 @@ const Page = () => {
 					</DataTable>
 				)}
 			</div>
-			<ToastContainer />
+			{/* <ToastContainer /> */}
 		</>
 	);
 };
