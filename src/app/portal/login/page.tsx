@@ -58,8 +58,8 @@ export default function Page() {
 		<div className={styles.container}>
 			<div className={styles.content}>
 				<div className={styles.logo}>
-					<Image src="/images/logo.svg" alt="Logo" width={100} height={100} />
-					<h3>WS Sistema</h3>
+					{/* <Image src="/images/logo.svg" alt="Logo" width={100} height={100} /> */}
+					<h3>Navalog</h3>
 				</div>
 
 				<form className={styles.form} onSubmit={handleSubmit}>
