@@ -127,7 +127,7 @@ export default function Home() {
 
 				<div className={styles.imageService}>
 					<Image
-						src="/images/fig_service.png"
+						src="/images/fig_service.svg"
 						alt="Descrição da imagem para acessibilidade"
 						width={300}
 						height={300}
